@@ -1,0 +1,45 @@
+body {
+	font-family: "Lucida Grande", sans-serif;
+	font-size: 10pt;
+	color: white;
+	background-color: #222; }
+
+.wrapper {
+	border: solid 2px #1C1C1C;
+	border-top: none;
+	
+  > header {
+	  background-image: url('screenshots/2.png');
+	  border-bottom: solid 2px #252525; }
+	  
+  > nav {
+    background: -webkit-gradient(linear, left top, left bottom, from(#444), to(#222));
+	  background: -moz-linear-gradient(-90deg, #444, #222);
+	  border-bottom: solid 2px #1C1C1C;
+	  
+    input[type='text'], input[type='password'] {
+      	border-radius: 10px;
+	    border: none;
+	    box-shadow: inset 1px 1px 3px gray; }
+	  ul {
+	    background-color: #2A2A2A;
+	    border-top: solid 1px #444; }
+	  li {
+	    border-right: solid 1px #444;
+      a {
+        color: white;
+        text-decoration: none;
+        &:hover { background-color: red; }
+      }
+    }
+  }
+
+  > section {
+    background-color: white;
+    color: black;
+  }
+
+  > footer {
+    font-size: 80%;
+    text-align: center; }
+}

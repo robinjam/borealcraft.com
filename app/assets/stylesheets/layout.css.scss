@@ -1,0 +1,38 @@
+body {
+	margin: 0; }
+
+.wrapper {
+	width: 1000px;
+	margin: 0 auto;
+  
+  > header {
+	  height: 200px; }
+	  
+  > nav {
+    form {
+	    display: inline-block;
+	    padding: 10px; }
+	  input[type='text'], input[type='password'] {
+	    padding: 4px 10px; }
+	  ul {
+	    list-style: none;
+	    padding: 0;
+	    margin: 0; }
+	  li {
+	    display: inline-block;
+	    overflow: auto;
+	    a {
+	      display: inline-block;
+	      padding: 10px 20px;
+      }
+	  }
+  }
+  
+  > section {
+    padding: 10px 20px; }
+}
+
+.news-bar {
+	float: right;
+	padding: 13px 10px;
+}

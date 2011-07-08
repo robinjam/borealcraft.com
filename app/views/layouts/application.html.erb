@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MineRobinjamNet</title>
+  <title>Robinjam's Minecraft Server</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<div class="wrapper">
+	<header>
+	</header>
+	<nav>
+		<form>
+			<input type="text" placeholder="Username">
+			<input type="password" placeholder="Password">
+			<input type="submit" value="Log in">
+		</form>
+		<div class="news-bar">
+			<strong>Latest news</strong>: Lots of really interesting stuff.
+		</div>
+		<ul>
+			<li><%= link_to 'Home', root_path %></a></li><li>
+			<a href="http://mine.robinjam.net:8123/">Map</a></li>
+		</ul>
+	</nav>
+	<section>
+
+    <%= yield %>
+	  
+	</section>
+	<footer>
+		<p>&copy; 2011 James Robinson.</p>
+	</footer>
+</div>
 
 </body>
 </html>
