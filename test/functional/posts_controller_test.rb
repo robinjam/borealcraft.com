@@ -2,13 +2,15 @@ require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
   setup do
-    @post = Post.create!(title: "Test", content: "This is a test")
+    @post = Post.create!(title: "Test", content: "This is a test", created_at: 5.minutes.ago)
+    @post_two = Post.create!(title: "Test", content: "This is a test")
   end
 
   test "should get index" do
     get :index
     assert_response :success
     assert_not_nil assigns(:posts)
+    assert_equal [@post_two, @post], assigns(:posts), "Posts should be sorted by date"
   end
 
   test "should get new" do
