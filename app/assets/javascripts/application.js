@@ -12,6 +12,7 @@ var num_screenshots = 5;
 
 $(function() {
   cycleScreenshots(1);
+  $(".flash").delay(5000).slideUp(500);
 });
 
 function cycleScreenshots(n) {
