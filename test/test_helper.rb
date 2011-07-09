@@ -10,4 +10,11 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def as_admin
+    user_id = session[:user_id]
+    u = User.create!(username: 'test', password: 'testpass', admin: true)
+    session[:user_id] = u.id
+    yield
+    session[:user_id] = user_id
+  end
 end

@@ -14,13 +14,13 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    as_admin { get :new }
     assert_response :success
   end
 
   test "should create post" do
     assert_difference('Post.count') do
-      post :create, post: @post.attributes
+      as_admin { post :create, post: @post.attributes }
     end
 
     assert_redirected_to post_path(assigns(:post))
@@ -32,18 +32,18 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit, id: @post.to_param
+    as_admin { get :edit, id: @post.to_param }
     assert_response :success
   end
 
   test "should update post" do
-    put :update, id: @post.to_param, post: @post.attributes
+    as_admin { put :update, id: @post.to_param, post: @post.attributes }
     assert_redirected_to post_path(assigns(:post))
   end
 
   test "should destroy post" do
     assert_difference('Post.count', -1) do
-      delete :destroy, id: @post.to_param
+      as_admin { delete :destroy, id: @post.to_param }
     end
 
     assert_redirected_to posts_path

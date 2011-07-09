@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_filter :authorize, except: [ :show ]
+  
   # GET /pages/1
   # GET /pages/1.json
   def show

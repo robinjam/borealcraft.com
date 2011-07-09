@@ -28,14 +28,4 @@ class SessionsController < ApplicationController
       format.json { head :ok }
     end
   end
-
-  protected
-
-  def redirect_back(params)
-    begin
-      redirect_to :back, params
-    rescue ActionController::RedirectBackError
-      redirect_to root_url, params
-    end
-  end
 end

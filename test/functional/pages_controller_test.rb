@@ -6,13 +6,13 @@ class PagesControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    as_admin { get :new }
     assert_response :success
   end
 
   test "should create page" do
     assert_difference('Page.count') do
-      post :create, page: @page.attributes
+      as_admin { post :create, page: @page.attributes }
     end
 
     assert_redirected_to page_path(assigns(:page))
@@ -24,18 +24,18 @@ class PagesControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit, id: @page.to_param
+    as_admin { get :edit, id: @page.to_param }
     assert_response :success
   end
 
   test "should update page" do
-    put :update, id: @page.to_param, page: @page.attributes
+    as_admin { put :update, id: @page.to_param, page: @page.attributes }
     assert_redirected_to page_path(assigns(:page))
   end
 
   test "should destroy page" do
     assert_difference('Page.count', -1) do
-      delete :destroy, id: @page.to_param
+      as_admin { delete :destroy, id: @page.to_param }
     end
 
     assert_redirected_to root_path
