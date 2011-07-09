@@ -2,13 +2,7 @@ require 'test_helper'
 
 class PagesControllerTest < ActionController::TestCase
   setup do
-    @page = pages(:one)
-  end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:pages)
+    @page = Page.create(title: 'Test page', content: 'Test content')
   end
 
   test "should get new" do
@@ -44,6 +38,6 @@ class PagesControllerTest < ActionController::TestCase
       delete :destroy, id: @page.to_param
     end
 
-    assert_redirected_to pages_path
+    assert_redirected_to root_path
   end
 end
