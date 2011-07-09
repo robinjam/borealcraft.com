@@ -6,7 +6,7 @@
   <header>
     <h1><%= link_to @post.title, @post %> <date><%= published_date_of @post %></date></h1>
   </header>
-  <%= raw @post.content %>
+  <%= markdown @post.content %>
   <footer>
     <p>
       <%= link_to 'Edit', edit_post_path(@post.to_param) %> |
