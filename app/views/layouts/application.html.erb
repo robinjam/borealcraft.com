@@ -18,7 +18,12 @@
 			<input type="submit" value="Log in">
 		</form>
 		<div class="news-bar">
-			<strong>Latest news</strong>: Lots of really interesting stuff.
+			<strong>Server status</strong>:
+			<% if server_online? %>
+			  <span style="color: #AFA;">Online</span>.
+			<% else %>
+			  <span style="color: #F88;">Offline</span>.
+			<% end %>
 		</div>
 		<ul>
 			<li><%= link_to 'Home', root_path %></a></li><li>
