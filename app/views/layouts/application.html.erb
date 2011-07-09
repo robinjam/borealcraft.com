@@ -13,10 +13,16 @@
 	  <%= image_tag 'screenshots/2.png', id: 'screenshot', style: 'display: none' %>
 	</header>
 	<nav>
-		<form>
-			<input type="text" placeholder="Username">
-			<input type="password" placeholder="Password">
-			<input type="submit" value="Log in">
+	  <% if logged_in? %>
+	    <p>Logged in as <strong><%= current_user.username %></strong>. <%= button_to 'Log out', session_path, method: :delete %></p>
+	  <% else %>
+		  <%= form_tag session_path do %>
+			  <%= text_field_tag :username, nil, placeholder: "Username" %>
+			  <%= password_field_tag :password, nil, placeholder: "Password" %>
+			
+			  <%= submit_tag "Log in" %>
+		  <% end %>
+		<% end %>
 		</form>
 		<div class="news-bar">
 			<strong>Server status</strong>:
@@ -35,6 +41,11 @@
 	 --><li><%= link_to 'Add a page', new_page_path %></a></li>
 		</ul>
 	</nav>
+	<% unless flash.empty? %>
+    <% flash.each do |key, value| %>
+      <p class="flash <%= key %>"><%= value %></p>
+    <% end %>
+  <% end %>
 	<section>
 
     <%= yield %>

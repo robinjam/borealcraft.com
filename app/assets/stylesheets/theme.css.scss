@@ -70,3 +70,13 @@ textarea {
 header h1, section h1, article h1 {
   font-size: 200%;
   margin-bottom: 0.5em; }
+
+.flash {
+  padding: 10px;
+  margin: 0;
+  border-bottom: solid 1px black;
+  color: black;
+  
+  &.alert { background-color: #F88; border-color: red; }
+  &.notice { background-color: #AFA; border-color: green; }
+}

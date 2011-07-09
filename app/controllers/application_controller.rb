@@ -1,11 +1,23 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :server_online?
+  helper_method :server_online?, :current_user, :logged_in?, :admin?
 
   protected
 
   def server_online?
     return !`screen -ls | grep "\.minecraft"`.empty?
+  end
+
+  def current_user
+    User.find_by_id(session[:user_id])
+  end
+
+  def logged_in?
+    return !current_user.nil?
+  end
+
+  def admin?
+    return current_user && current_user.admin?
   end
 end

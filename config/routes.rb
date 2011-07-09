@@ -1,4 +1,7 @@
 MineRobinjamNet::Application.routes.draw do
+
+  resource :session, :only => [:create, :destroy]
+
   resources :pages do
     member do
       get 'delete'

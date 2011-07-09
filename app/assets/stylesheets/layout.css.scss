@@ -9,9 +9,10 @@ body {
 	  height: 200px; }
 	  
   > nav {
-    form {
+    form, p {
 	    display: inline-block;
-	    padding: 10px; }
+	    padding: 10px 0 10px 10px;
+	    margin: 0; }
 	  input[type='text'], input[type='password'] {
 	    padding: 4px 10px; }
 	  ul {
