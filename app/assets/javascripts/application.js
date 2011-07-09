@@ -8,14 +8,6 @@
 //= require jquery_ujs
 //= require_tree .
 
-// Wait 5 seconds
-// Fade in image tag
-// Set background tag to new image
-// Wait 5 seconds
-// Fade out image tag
-// Set image tag to new image
-// Repeat
-
 var num_screenshots = 5;
 
 $(function() {
@@ -31,5 +23,5 @@ function cycleScreenshots(n) {
 }
 
 function getScreenshot(n) {
-  return "assets/screenshots/" + n + ".png";
+  return "/assets/screenshots/" + n + ".png";
 }
