@@ -1,14 +1,14 @@
-<p id="notice"><%= notice %></p>
-
 <article>
   <header>
     <h1><%= link_to @post.title, @post %> <date><%= published_date_of @post %></date></h1>
   </header>
   <%= markdown @post.content %>
-  <footer>
-    <p>
-      <%= link_to 'Edit', edit_post_path(@post.to_param) %> |
-      <%= link_to 'Delete', delete_post_path(@post) %>
-    </p>
-  </footer>
+  <% if admin? %>
+    <footer>
+      <p>
+        <%= link_to 'Edit', edit_post_path(@post.to_param) %> |
+        <%= link_to 'Delete', delete_post_path(@post) %>
+      </p>
+    </footer>
+  <% end %>
 </article>
