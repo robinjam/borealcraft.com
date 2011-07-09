@@ -1,5 +1,10 @@
 MineRobinjamNet::Application.routes.draw do
-  resources :posts
+  resources :posts do
+    member do
+      get 'delete'
+    end
+  end
+  
   root to: "posts#index"
 
   # The priority is based upon order of creation:

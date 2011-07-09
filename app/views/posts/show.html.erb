@@ -1,20 +1,16 @@
+<h1><%= link_to 'News', posts_path %></h1>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @post.title %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @post.content %>
-</p>
-
-<p>
-  <b>Published:</b>
-  <%= @post.published %>
-</p>
-
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<article>
+  <header>
+    <h1><%= link_to @post.title, @post %> <date><%= published_date_of @post %></date></h1>
+  </header>
+  <%= raw @post.content %>
+  <footer>
+    <p>
+      <%= link_to 'Edit', edit_post_path(@post.to_param) %> |
+      <%= link_to 'Delete', delete_post_path(@post) %>
+    </p>
+  </footer>
+</article>

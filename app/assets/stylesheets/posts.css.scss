@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body.posts {
-  // Add the posts class to your body tag
-  // Then, place scoped styles here.
+  > .wrapper > section > article {
+    border-bottom: solid 1px #DDD;
+
+    &:last-child {
+      border-bottom: none; }
+  }
 }

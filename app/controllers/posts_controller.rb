@@ -69,6 +69,11 @@ class PostsController < ApplicationController
     end
   end
 
+  # GET /posts/1/delete
+  def delete
+    @post = Post.find(params[:id])
+  end
+
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy

@@ -36,3 +36,8 @@ body {
 	float: right;
 	padding: 13px 10px;
 }
+
+form.button_to {
+  &, div {
+    display: inline; }
+}

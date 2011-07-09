@@ -9,7 +9,7 @@ body {
 	border-top: none;
 	
   > header {
-	  background-image: url('screenshots/2.png');
+	  background-image: url('screenshots/6.png');
 	  border-bottom: solid 2px #252525; }
 	  
   > nav {
@@ -37,9 +37,23 @@ body {
   > section {
     background-color: white;
     color: black;
+
+    > h1 {
+      font-size: 300%;
+      font-weight: normal;
+      margin: 0.5em 0 0 0; }
   }
 
   > footer {
     font-size: 80%;
     text-align: center; }
+}
+
+h1 {
+  date {
+    color: #CCC;
+    font-size: 80%; }
+  a {
+    color: black;
+    text-decoration: none; }
 }
