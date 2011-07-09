@@ -26,8 +26,12 @@
 			<% end %>
 		</div>
 		<ul>
-			<li><%= link_to 'Home', root_path %></a></li><li>
-			<a href="http://mine.robinjam.net:8123/">Map</a></li>
+			<li><%= link_to 'Home', root_path %></a></li><!--
+	 --><% Page.all.each do |page| %><!--
+	   --><li><%= link_to page.title, page %></li><!--
+	 --><% end %><!--
+	 --><li><a href="http://mine.robinjam.net:8123/">Map</a></li><!--
+	 --><li><%= link_to 'Add a page', new_page_path %></a></li>
 		</ul>
 	</nav>
 	<section>

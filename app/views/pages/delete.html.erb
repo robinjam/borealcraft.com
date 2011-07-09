@@ -1,0 +1,6 @@
+<h1>Delete Page</h1>
+<p>Are you sure you want to delete the page entitled "<strong><%= @page.title %></strong>"?</p>
+<p>
+  <%= button_to 'Yes, delete this page', @page, method: :delete %>
+  <%= link_to 'No, keep this page', @page %>
+</p>

@@ -1,4 +1,10 @@
 MineRobinjamNet::Application.routes.draw do
+  resources :pages do
+    member do
+      get 'delete'
+    end
+  end
+
   resources :posts do
     member do
       get 'delete'
