@@ -7,3 +7,29 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+// Wait 5 seconds
+// Fade in image tag
+// Set background tag to new image
+// Wait 5 seconds
+// Fade out image tag
+// Set image tag to new image
+// Repeat
+
+var num_screenshots = 5;
+
+$(function() {
+  cycleScreenshots(1);
+});
+
+function cycleScreenshots(n) {
+  $("#screenshot").attr("src", getScreenshot(n % num_screenshots + 1));
+  $("#screenshot").delay(5000).fadeIn(2000, function() {
+    $(".wrapper > header").css("background-image", "url('" + getScreenshot((n+1) % num_screenshots + 1) + "')");
+    $("#screenshot").delay(5000).fadeOut(2000, function() {cycleScreenshots(n+2)});
+  })
+}
+
+function getScreenshot(n) {
+  return "assets/screenshots/" + n + ".png";
+}
