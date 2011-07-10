@@ -1,6 +1,6 @@
 <article>
   <header>
-    <h1><%= link_to @post.title, @post %> <time datetime="<%= post.updated_at.iso8601 %>"><%= published_date_of @post %></time></h1>
+    <h1><%= link_to @post.title, @post %> <time datetime="<%= @post.updated_at.iso8601 %>"><%= published_date_of @post %></time></h1>
   </header>
   <%= markdown @post.content %>
   <% if admin? %>
