@@ -7,14 +7,17 @@ body {
   
   > header {
 	  height: 200px; }
-	  
-  > nav {
-    form, p {
-	    display: inline-block;
-	    padding: 10px 0 10px 10px;
-	    margin: 0; }
+
+	> .authentication {
+	  padding: 0 15px;
+	  form, div, p {
+	    line-height: 40px;
+	    display: inline-block; }
 	  input[type='text'], input[type='password'] {
 	    padding: 4px 10px; }
+	}
+	  
+  > nav {
 	  ul {
 	    list-style: none;
 	    padding: 0;
@@ -35,7 +38,6 @@ body {
 
 .news-bar {
 	float: right;
-	padding: 13px 10px;
 }
 
 form.button_to {

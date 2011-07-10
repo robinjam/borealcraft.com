@@ -1,0 +1,19 @@
+<% if logged_in? %>
+  Logged in as <strong><%= current_user.username %></strong>. <%= button_to 'Log out', session_path, method: :delete %>
+<% else %>
+  <%= form_tag session_path do %>
+	  <%= text_field_tag :username, nil, placeholder: "Username" %>
+	  <%= password_field_tag :password, nil, placeholder: "Password" %>
+	
+	  <%= submit_tag "Log in" %>
+  <% end %>
+<% end %>
+
+<div class="news-bar">
+	<strong>Server status</strong>:
+	<% if server_online? %>
+	  <span style="color: #AFA;">Online</span>.
+	<% else %>
+	  <span style="color: #F88;">Offline</span>.
+	<% end %>
+</div>

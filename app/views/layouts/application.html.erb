@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>Robinjam's Minecraft Server</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
@@ -12,39 +13,14 @@
 	<header>
 	  <%= image_tag 'screenshots/2.png', id: 'screenshot', style: 'display: none' %>
 	</header>
+	<div class="authentication">
+	  <%= render partial: 'authentication' %>
+	</div>
 	<nav>
-	  <% if logged_in? %>
-	    <p>Logged in as <strong><%= current_user.username %></strong>. <%= button_to 'Log out', session_path, method: :delete %></p>
-	  <% else %>
-		  <%= form_tag session_path do %>
-			  <%= text_field_tag :username, nil, placeholder: "Username" %>
-			  <%= password_field_tag :password, nil, placeholder: "Password" %>
-			
-			  <%= submit_tag "Log in" %>
-		  <% end %>
-		<% end %>
-		</form>
-		<div class="news-bar">
-			<strong>Server status</strong>:
-			<% if server_online? %>
-			  <span style="color: #AFA;">Online</span>.
-			<% else %>
-			  <span style="color: #F88;">Offline</span>.
-			<% end %>
-		</div>
-		<ul>
-			<li><%= link_to 'Home', root_path %></li><!--
-	 --><% Page.all.each do |page| %><!--
-	   --><li><%= link_to page.title, page %></li><!--
-	 --><% end %><!--
-	 --><li><a href="http://mine.robinjam.net:8123/">Map</a></li><!--
-	 --><% if admin? %><li><%= link_to 'Add a page', new_page_path %></li><% end %>
-		</ul>
+    <%= render partial: 'navigation' %>
 	</nav>
-	<% unless flash.empty? %>
-    <% flash.each do |key, value| %>
-      <p class="flash <%= key %>"><%= value %></p>
-    <% end %>
+  <% flash.each do |key, value| %>
+    <p class="flash <%= key %>"><%= value %></p>
   <% end %>
 	<section>
 

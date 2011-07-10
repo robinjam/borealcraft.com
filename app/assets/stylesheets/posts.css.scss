@@ -9,4 +9,8 @@ body.posts {
     &:last-child {
       border-bottom: none; }
   }
+
+  time {
+    color: #AAA;
+    font-size: 80%; }
 }
