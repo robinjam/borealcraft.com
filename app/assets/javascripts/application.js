@@ -8,21 +8,28 @@
 //= require jquery_ujs
 //= require_tree .
 
-var num_screenshots = 5;
-
 $(function() {
-  cycleScreenshots(1);
+  // Load all the screenshots
+  for (var i = 1; i <= 5; i++)
+    $(".wrapper > header").append('<img src="/assets/screenshots/' + i + '.png" data-id="' + i + '" class="screenshot"/>');
+
+  cycleScreenshots(0);
+
+  // Hide the flash messages
   $(".flash").delay(5000).slideUp(500);
 });
 
+// n = current image
 function cycleScreenshots(n) {
-  $("#screenshot").attr("src", getScreenshot(n % num_screenshots + 1));
-  $("#screenshot").delay(5000).fadeIn(2000, function() {
-    $(".wrapper > header").css("background-image", "url('" + getScreenshot((n+1) % num_screenshots + 1) + "')");
-    $("#screenshot").delay(5000).fadeOut(2000, function() {cycleScreenshots(n+2)});
-  })
+  var nextImageId = (n + 1) % 5 + 1;
+  var nextImage = getImage(nextImageId);
+  nextImage.delay(5000).css("z-index", n);
+  nextImage.fadeIn(1000, function() {
+    getImage(n % 5 + 1).hide();
+    cycleScreenshots(n + 1);
+  });
 }
 
-function getScreenshot(n) {
-  return "/assets/screenshots/" + n + ".png";
+function getImage(n) {
+  return $(".wrapper > header img[data-id='" + n + "']");
 }

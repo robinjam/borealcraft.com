@@ -6,7 +6,14 @@ body {
 	margin: 0 auto;
   
   > header {
-	  height: 200px; }
+	  height: 200px;
+	  position: relative;
+
+	  .screenshot {
+	    position: absolute;
+	    top: 0;
+	    display: none; }
+	}
 
 	> .authentication {
 	  padding: 0 15px;
