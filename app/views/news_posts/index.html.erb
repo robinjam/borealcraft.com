@@ -1,6 +1,6 @@
 <h1>News</h1>
 
-<% @posts.each do |post| %>
+<% @news_posts.each do |post| %>
   <article>
     <header>
       <h1><%= link_to post.title, post %> <time datetime="<%= post.updated_at.iso8601 %>"><%= published_date_of post %></time></h1>
@@ -9,8 +9,8 @@
     <% if admin? %>
       <footer>
         <p>
-          <%= link_to 'Edit', edit_post_path(post) %> |
-          <%= link_to 'Delete', delete_post_path(post) %>
+          <%= link_to 'Edit', edit_news_post_path(post) %> |
+          <%= link_to 'Delete', delete_news_post_path(post) %>
         </p>
       </footer>
     <% end %>
@@ -18,5 +18,5 @@
 <% end %>
 
 <% if admin? %>
-  <p><%= link_to 'New Post', new_post_path %></p>
+  <p><%= link_to 'New Post', new_news_post_path %></p>
 <% end %>

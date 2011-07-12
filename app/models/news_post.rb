@@ -1,0 +1,3 @@
+class NewsPost < Post
+
+end

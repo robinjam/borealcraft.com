@@ -20,8 +20,4 @@ class PostTest < ActiveSupport::TestCase
     assert !Post.new(attrs).valid?
     assert !Post.new(attrs.merge content: '').valid?
   end
-
-  test "article is not published by default" do
-    assert !Post.new(@valid_attributes).published?
-  end
 end

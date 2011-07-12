@@ -1,0 +1,6 @@
+<h1>Delete Post</h1>
+<p>Are you sure you want to delete the post entitled '<strong><%= @news_post.title %></strong>'?</p>
+<p>
+  <%= button_to 'Yes, delete this post', @news_post, method: :delete %>
+  <%= link_to 'No, keep this post', @news_post %>
+</p>

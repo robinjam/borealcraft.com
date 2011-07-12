@@ -8,13 +8,13 @@ MineRobinjamNet::Application.routes.draw do
     end
   end
 
-  resources :posts do
+  resources :news_posts, path: "news" do
     member do
       get 'delete'
     end
   end
   
-  root to: "posts#index"
+  root to: "news_posts#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

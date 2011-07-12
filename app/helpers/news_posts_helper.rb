@@ -1,4 +1,4 @@
-module PostsHelper
+module NewsPostsHelper
   def published_date_of(post)
     if post.updated_at < 1.day.ago
       post.updated_at.strftime "#{post.updated_at.day.ordinalize} %B %Y"
