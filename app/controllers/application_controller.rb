@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def server_online?
-    return !`screen -ls | grep "\.minecraft"`.empty?
+    return !`screen -ls | grep "\\.minecraft"`.empty?
   end
 
   def current_user
