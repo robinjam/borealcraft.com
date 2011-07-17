@@ -1,5 +1,5 @@
 class NewsPostsController < ApplicationController
-  before_filter :authorize, except: [ :index, :show ]
+  skip_before_filter :authorize, only: [ :index, :show ]
   helper_method :num_pages
   
   # GET /posts

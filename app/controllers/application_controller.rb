@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   helper_method :server_online?, :current_user, :logged_in?, :admin?
+  before_filter :authorize
 
   protected
 
