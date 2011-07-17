@@ -3,7 +3,7 @@
 <% @news_posts.each do |post| %>
   <article>
     <header>
-      <h1><%= link_to post.title, post %> <time datetime="<%= post.updated_at.iso8601 %>"><%= published_date_of post %></time></h1>
+      <h1><%= link_to post.title, post %> <time datetime="<%= post.created_at.iso8601 %>"><%= published_date_of post %></time></h1>
     </header>
     <%= markdown post.content %>
     <% if admin? %>
@@ -20,3 +20,8 @@
 <% if admin? %>
   <p><%= link_to 'New Post', new_news_post_path %></p>
 <% end %>
+
+<p class="pagination">
+  <%= link_to '« Newer posts', news_posts_path(page: @page - 1) if @page > 1 %>
+  <%= link_to 'Older posts »', news_posts_path(page: @page + 1) if @page < num_pages %>
+</p>

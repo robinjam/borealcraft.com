@@ -1,9 +1,15 @@
 class NewsPostsController < ApplicationController
   before_filter :authorize, except: [ :index, :show ]
+  helper_method :num_pages
+  
   # GET /posts
   # GET /posts.json
   def index
-    @news_posts = NewsPost.all order: "created_at DESC"
+    @page = params[:page] ? params[:page].to_i : 1
+
+    redirect_to news_posts_url and return if @page < 1 or @page > num_pages
+    
+    @news_posts = NewsPost.order("created_at DESC").limit(5).offset((@page - 1) * 5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -85,5 +91,11 @@ class NewsPostsController < ApplicationController
       format.html { redirect_to news_posts_url }
       format.json { head :ok }
     end
+  end
+
+  protected
+
+  def num_pages
+    NewsPost.order("created_at DESC").count / 5 + 1
   end
 end
