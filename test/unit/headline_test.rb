@@ -15,4 +15,11 @@ class HeadlineTest < ActiveSupport::TestCase
     assert_nil headline.created_at
     assert_nil headline.updated_at
   end
+
+  test "destroys all associated comments on delete" do
+    headline = Factory(:headline)
+    comment = Factory(:comment, commentable: headline)
+    headline.destroy
+    assert_nil Comment.find_by_id(comment.id), "Comment should have been deleted"
+  end
 end

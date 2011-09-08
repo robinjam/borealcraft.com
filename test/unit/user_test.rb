@@ -49,4 +49,11 @@ class UserTest < ActiveSupport::TestCase
     assert_equal "41b85", User.generate_token("foo")
     assert_equal "ac4ec", User.generate_token("bar")
   end
+
+  test "destroys all associated comments on delete" do
+    user = Factory(:user)
+    comment = Factory(:comment, user: user)
+    user.destroy
+    assert_nil Comment.find_by_id(comment.id), "Comment should have been deleted"
+  end
 end

@@ -6,13 +6,13 @@ FactoryGirl.define do
     token { |u| User.generate_token(u.username) }
   end
 
-  #factory :headline do
-  #  sequence(:title) { |n| "Headline #{n}" }
-  #  sequence(:content) { |n| "This is the content of headline \##{n}." }
-  #end
+  factory :headline do
+    sequence(:title) { |n| "Headline #{n}" }
+    sequence(:content) { |n| "This is the content of headline \##{n}." }
+  end
 
-  #factory :comment do
-  #  association :user
-  #  content "This is a test comment."
-  #end
+  factory :comment do
+    association :user
+    content "This is a test comment."
+  end
 end

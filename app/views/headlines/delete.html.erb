@@ -1,5 +1,5 @@
 <h1>Delete headline</h1>
-<p>Are you sure you want to delete the headline entitled '<strong><%= @headline.title %></strong>'?</p>
+<p>Are you sure you want to delete the headline entitled '<strong><%= @headline.title %></strong>', and all of its comments?</p>
 <p>
   <%= button_to 'Yes, delete this headline', @headline, method: :delete %>
   <%= link_to 'No, cancel', @headline %>
