@@ -1,0 +1,32 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <p>Uh-oh, looks like you done goofed:</p>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p class="field">
+    <%= f.label :token %><br />
+    <%= f.text_field :token %>
+  </p>
+  <p class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p class="actions">
+    <%= f.submit %>
+  </p>
+<% end %>

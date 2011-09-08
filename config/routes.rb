@@ -13,6 +13,8 @@ MineRobinjamNet::Application.routes.draw do
       get 'delete'
     end
   end
+
+  resources :users
   
   root to: "headlines#index"
 
