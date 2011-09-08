@@ -12,7 +12,7 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   def as_admin
     user_id = session[:user_id]
-    u = User.create!(username: 'test', password: 'testpass', admin: true)
+    u = Factory(:user, admin: true)
     session[:user_id] = u.id
     yield
     session[:user_id] = user_id
