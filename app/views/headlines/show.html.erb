@@ -1,0 +1,14 @@
+<article>
+  <header>
+    <h1><%= link_to @headline.title, @headline %> <time datetime="<%= @headline.updated_at.iso8601 %>"><%= published_date_of @headline %></time></h1>
+  </header>
+  <%= markdown @headline.content %>
+  <% if admin? %>
+    <footer>
+      <p>
+        <%= link_to 'Edit', edit_headline_path(@headline.to_param) %> |
+        <%= link_to 'Delete', delete_headline_path(@headline) %>
+      </p>
+    </footer>
+  <% end %>
+</article>

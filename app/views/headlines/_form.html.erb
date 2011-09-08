@@ -1,10 +1,10 @@
-<%= form_for(@news_post) do |f| %>
-  <% if @news_post.errors.any? %>
+<%= form_for(@headline) do |f| %>
+  <% if @headline.errors.any? %>
     <p id="error_explanation">
-      <h2><%= pluralize(@news_post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(@headline.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-      <% @news_post.errors.full_messages.each do |msg| %>
+      <% @headline.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

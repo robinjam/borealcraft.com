@@ -1,9 +1,23 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
-
 one:
-  title: MyString
-  content: MyText
+  title: Headline 1
+  content: This is headline 1
 
 two:
-  title: MyString
-  content: MyText
+  title: Headline 2
+  content: This is headline 2
+
+three:
+  title: Headline 3
+  content: This is headline 3
+
+four:
+  title: Headline 4
+  content: This is headline 4
+
+five:
+  title: Headline 5
+  content: This is headline 5
+
+six:
+  title: Headline 6
+  content: This is headline 6

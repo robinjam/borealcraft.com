@@ -1,3 +1,0 @@
-class NewsPost < Post
-
-end
