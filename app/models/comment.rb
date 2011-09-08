@@ -4,5 +4,6 @@ class Comment < ActiveRecord::Base
 
   attr_accessible :content
 
-  validates_length_of :content, minimum: 15, maximum: 1000
+  validates_presence_of :content
+  validates_length_of :content, maximum: 1000
 end

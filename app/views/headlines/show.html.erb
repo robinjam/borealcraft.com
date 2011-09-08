@@ -12,3 +12,14 @@
     </footer>
   <% end %>
 </article>
+
+<h2><%= pluralize(@headline.comments.count, "comment") %></h2>
+
+<%= render @headline.comments %>
+
+<% if logged_in? %>
+  <% @comment = @headline.comments.build %>
+  <%= render "comments/form" %>
+<% else %>
+  <p>Please <a href="#">log in</a> or <%= link_to "register", new_user_path %> to post a comment.</p>
+<% end %>

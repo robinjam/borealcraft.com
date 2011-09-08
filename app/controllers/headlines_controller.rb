@@ -21,6 +21,7 @@ class HeadlinesController < ApplicationController
   # GET /posts/1.json
   def show
     @headline = Headline.find(params[:id])
+    @commentable = @headline
 
     respond_to do |format|
       format.html # show.html.erb

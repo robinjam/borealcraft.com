@@ -9,14 +9,15 @@
       </h1>
     </header>
     <%= markdown post.content %>
-    <% if admin? %>
       <footer>
         <p>
-          <%= link_to 'Edit', edit_headline_path(post) %> |
-          <%= link_to 'Delete', delete_headline_path(post) %>
+          <%= link_to pluralize(post.comments.count, "comment"), post %>
+          <% if admin? %>
+            | <%= link_to 'Edit', edit_headline_path(post) %>
+            | <%= link_to 'Delete', delete_headline_path(post) %>
+          <% end %>
         </p>
-      </footer>
-    <% end %>
+    </footer>
   </article>
 <% end %>
 

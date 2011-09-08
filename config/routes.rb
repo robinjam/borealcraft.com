@@ -12,6 +12,8 @@ MineRobinjamNet::Application.routes.draw do
     member do
       get 'delete'
     end
+
+    resources :comments
   end
 
   resources :users
