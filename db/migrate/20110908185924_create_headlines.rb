@@ -1,6 +1,8 @@
 class CreateHeadlines < ActiveRecord::Migration
   class Headline < ActiveRecord::Base; end
-  class Post < ActiveRecord::Base; end
+  class Post < ActiveRecord::Base
+    set_inheritance_column :none
+  end
   
   def up
     create_table :headlines do |t|
