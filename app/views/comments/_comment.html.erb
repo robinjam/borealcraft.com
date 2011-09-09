@@ -1,7 +1,10 @@
 <article class="comment">
   <header>
     <p>
-      <%= image_tag("admin.png", class: "admin-icon", title: "This user is an administrator.") if comment.user.admin? %><b><%= comment.user.username %></b>, <%= published_date_of comment %>:
+      <% if comment.user.admin? %>
+        <img src="<%= asset_path("admin.png") %>" class="admin-icon" title="This user is an administrator." />
+      <% end %>
+      <b><%= comment.user.username %></b>, <%= published_date_of comment %>:
     </p>
   </header>
   <p><%= comment.content.gsub("\n", "<br />").html_safe %></p>

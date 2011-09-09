@@ -10,11 +10,15 @@
 
 (function($) {
   var num_screenshots = 6;
+  var screenshots = new Array();
+  <% 6.times do |n| %>
+    screenshots[<%= n %>] = "<%= asset_path("screenshots/#{n}.png") %>";
+  <% end %>
   
   $(function() {
     // Load all the screenshots
     for (var i = 1; i <= num_screenshots; i++)
-      $(".wrapper > header").append('<img src="/assets/screenshots/' + i + '.png" data-id="' + i + '" class="screenshot"/>');
+      $(".wrapper > header").append('<img src="' + screenshots[i] + '" data-id="' + i + '" class="screenshot"/>');
 
     cycleScreenshots(0);
 
