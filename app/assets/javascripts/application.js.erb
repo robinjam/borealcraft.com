@@ -11,7 +11,7 @@
 (function($) {
   var num_screenshots = 6;
   var screenshots = new Array();
-  <% 6.times do |n| %>
+  <% (1..6).each do |n| %>
     screenshots[<%= n %>] = "<%= asset_path("screenshots/#{n}.png") %>";
   <% end %>
   
