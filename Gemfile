@@ -33,4 +33,6 @@ group :test do
   gem 'factory_girl_rails'
 end
 
+gem 'execjs'
+gem 'therubyracer'
 gem 'redcarpet'
