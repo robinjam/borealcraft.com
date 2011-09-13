@@ -1,6 +1,6 @@
 deploy_to = "/srv/www/robinjam.net/mine"
 repository = "/home/git/mine.robinjam.net.git"
-branch = "dev"
+branch = "master"
 
 target = "#{deploy_to}/current"
 timestamp = Time.now.utc.strftime("%Y-%m-%d-%H-%M-%S")
