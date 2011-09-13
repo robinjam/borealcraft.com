@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-MineRobinjamNet::Application.load_tasks
+Minecraft::Application.load_tasks
