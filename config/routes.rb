@@ -1,4 +1,4 @@
-MineRobinjamNet::Application.routes.draw do
+Minecraft::Application.routes.draw do
 
   resource :session, :only => [:create, :destroy]
 
