@@ -14,6 +14,7 @@ def run(cmd)
     puts "  ! Result:         #{result}"
     raise
   end
+  result
 end
 
 namespace :deploy do
@@ -63,6 +64,18 @@ namespace :deploy do
   task :restart do
     puts " => Restart"
     run "touch #{target}/tmp/restart.txt"
+  end
+
+  task :rollback do
+    puts " => Rollback"
+    releases = run("ls -x #{deploy_to}/releases").split.sort
+    raise "Cannot rollback when there are less than 2 releases" if releases.length < 2
+    target = "#{deploy_to}/releases/#{releases[-2]}"
+    Rake::Task["deploy:symlink"].execute
+    Rake::Task["deploy:restart"].execute
+    puts " => Cleanup"
+    run "rm -rf #{deploy_to}/releases/#{releases.last}"
+    puts " => Successfully rolled back to revision #{releases[-2]}."
   end
 end
 
