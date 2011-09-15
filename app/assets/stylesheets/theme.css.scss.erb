@@ -1,5 +1,5 @@
 @mixin gradient($top, $bottom) {
-  background: $bottom; /* Old browsers */
+  background: $top; /* Old browsers */
   background: -moz-linear-gradient(top, $top 0%, $bottom 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top, $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
@@ -17,6 +17,8 @@ body {
 	color: white;
 	background-color: #333;
 	background-image: url("<%= asset_path("background.png") %>"); }
+
+input { font-size: 9pt; }
 
 .wrapper {
 	box-shadow: 0 0 10px #1C1C1C;
