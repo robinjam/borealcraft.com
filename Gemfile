@@ -33,6 +33,9 @@ group :test do
   gem 'factory_girl_rails'
 end
 
+gem 'redcarpet'
+gem 'will_paginate', '~> 3.0'
+
+# Javascript runtime for asset precompilation
 gem 'execjs'
 gem 'therubyracer'
-gem 'redcarpet'

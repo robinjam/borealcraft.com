@@ -25,9 +25,4 @@
   <p><%= link_to 'New Headline', new_headline_path %></p>
 <% end %>
 
-<% if num_pages > 1 %>
-  <p class="pagination">
-    <%= link_to '« Newer posts', headlines_path(page: @page - 1) if @page > 1 %>
-    <%= link_to 'Older posts »', headlines_path(page: @page + 1) if @page < num_pages %>
-  </p>
-<% end %>
+<%= will_paginate @headlines %>

@@ -10,8 +10,6 @@ class HeadlinesControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:headlines)
-    # TODO: Posts should be sorted in order of creation date
-    assert_equal 5, assigns(:headlines).count, "There should be no more than 5 news posts per page"
   end
 
   test "should get new" do

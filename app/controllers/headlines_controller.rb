@@ -1,15 +1,10 @@
 class HeadlinesController < ApplicationController
   skip_before_filter :authorize, only: [ :index, :show ]
-  helper_method :num_pages
   
   # GET /posts
   # GET /posts.json
   def index
-    @page = params[:page] ? params[:page].to_i : 1
-
-    redirect_to headlines_url and return if @page < 1 or @page > num_pages
-    
-    @headlines = Headline.order("created_at DESC").limit(5).offset((@page - 1) * 5)
+    @headlines = Headline.order("created_at DESC").paginate(page: params[:page], per_page: 5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -92,11 +87,5 @@ class HeadlinesController < ApplicationController
       format.html { redirect_to headlines_url }
       format.json { head :ok }
     end
-  end
-
-  protected
-
-  def num_pages
-    Headline.order("created_at DESC").count / 5 + 1
   end
 end
