@@ -2,9 +2,7 @@
 
 <p>
   Uploaded by
-  <% if @screenshot.user.admin? %>
-    <img src="<%= asset_path("admin.png") %>" class="admin-icon" title="This user is an administrator." /><% end %><b><%= @screenshot.user.username %></b>
-  (<%= published_date_of @screenshot %>)
+  <%= render @screenshot.user %> (<%= published_date_of @screenshot %>)
 </p>
 
 <p>
