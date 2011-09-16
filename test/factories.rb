@@ -15,4 +15,10 @@ FactoryGirl.define do
     association :user
     content "This is a test comment."
   end
+
+  factory :screenshot do
+    title "Test screenshot"
+    description "Description of test screenshot"
+    image { fixture_file_upload('Creeper.png', 'image/png') }
+  end
 end

@@ -56,4 +56,11 @@ class UserTest < ActiveSupport::TestCase
     user.destroy
     assert_nil Comment.find_by_id(comment.id), "Comment should have been deleted"
   end
+
+  test "destroys all associated screenshots on delete" do
+    user = Factory(:user)
+    screenshot = Factory(:screenshot, user: user)
+    user.destroy
+    assert_nil Screenshot.find_by_id(screenshot.id), "Screenshot should have been deleted"
+  end
 end

@@ -2,6 +2,7 @@ require 'digest/sha2'
 
 class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
+  has_many :screenshots, dependent: :destroy
   
   attr_accessible :username, :password, :password_confirmation, :token
   attr_accessor :token
