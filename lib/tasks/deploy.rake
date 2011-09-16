@@ -20,7 +20,7 @@ end
 namespace :deploy do
   task :setup do
     puts " => Prepare application for deployment"
-    run "mkdir -p #{deploy_to}/releases #{deploy_to}/shared/assets #{deploy_to}/shared/bundle #{deploy_to}/shared/log"
+    run "mkdir -p #{deploy_to}/releases #{deploy_to}/shared/assets #{deploy_to}/shared/system #{deploy_to}/shared/bundle #{deploy_to}/shared/log"
   end
 
   task :checkout do
@@ -29,9 +29,10 @@ namespace :deploy do
     run [
       "mkdir #{target}",
       "git clone -b #{branch} #{repository} #{target}",
-      "rm -rf #{target}/.git #{target}/log #{target}/public/assets",
+      "rm -rf #{target}/.git #{target}/log #{target}/public/assets #{target}/public/system",
       "ln -s #{deploy_to}/shared/log #{target}/log",
-      "ln -s #{deploy_to}/shared/assets #{target}/public/assets"
+      "ln -s #{deploy_to}/shared/assets #{target}/public/assets",
+      "ln -s #{deploy_to}/shared/system #{target}/public/system"
     ].join(" && ")
   end
 
