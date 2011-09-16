@@ -36,6 +36,7 @@ end
 gem 'redcarpet'
 gem 'will_paginate', '~> 3.0'
 gem 'paperclip', '~> 2.4'
+gem 'chunky_png'
 
 # Javascript runtime for asset precompilation
 gem 'execjs'

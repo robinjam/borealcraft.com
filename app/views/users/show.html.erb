@@ -1,0 +1,13 @@
+<h1><%= image_tag avatar_user_path(@user, :png), style: "vertical-align: middle;" %> <%= @user.username %></h1>
+
+<h2>Badges</h2>
+<% if @user.admin? %>
+  <p><img src="<%= asset_path("admin.png") %>" class="admin-icon" />Administrator</p>
+<% else %>
+  <p><em>None to display</em></p>
+<% end %>
+
+<h2>Site stats</h2>
+<p>Registered: <%= published_date_of @user %></p>
+<p>Comments: <%= @user.comments.count %></p>
+<p>Screenshots: <%= @user.screenshots.count %></p>

@@ -1,1 +1,1 @@
-<% if user.admin? %><img src="<%= asset_path("admin.png") %>" class="admin-icon" title="This user is an administrator." /><% end %><b><%= user.username %></b>
+<a href="<%= user_path user %>"><% if user.admin? %><img src="<%= asset_path("admin.png") %>" class="admin-icon" title="This user is an administrator." /><% end %><b><%= user.username %></b></a>

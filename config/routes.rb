@@ -15,7 +15,9 @@ Minecraft::Application.routes.draw do
     resources :comments
   end
 
-  resources :users
+  resources :users do
+    get 'avatar', on: :member
+  end
   
   root to: "headlines#index"
 
