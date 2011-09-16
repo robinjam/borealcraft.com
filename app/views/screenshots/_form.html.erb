@@ -1,0 +1,29 @@
+<%= form_for(@screenshot) do |f| %>
+  <% if @screenshot.errors.any? %>
+    <div id="error_explanation">
+      <p>Uh-oh, looks like you done goofed:</p>
+      <ul>
+      <% @screenshot.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p class="field">
+    <%= f.label :description, 'Description (optional)' %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </p>
+
+  <p class="actions">
+    <%= f.submit %>
+  </p>
+<% end %>

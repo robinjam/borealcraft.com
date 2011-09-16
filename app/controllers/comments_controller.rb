@@ -27,12 +27,14 @@ class CommentsController < ApplicationController
   def parent_object
     case
       when params[:headline_id] then Headline.find(params[:headline_id])
+      when params[:screenshot_id] then Screenshot.find(params[:screenshot_id])
     end
   end  
 
   def parent_url(parent)
     case
       when params[:headline_id] then headline_url(parent)
+      when params[:screenshot_id] then screenshot_url(parent)
     end
   end
 end

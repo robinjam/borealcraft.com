@@ -21,4 +21,12 @@ class ActiveSupport::TestCase
     yield
     session[:user_id] = user_id
   end
+
+  def as_user
+    user_id = session[:user_id]
+    u = Factory(:user)
+    session[:user_id] = u.id
+    yield
+    session[:user_id] = user_id
+  end
 end

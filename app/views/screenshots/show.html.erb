@@ -1,0 +1,33 @@
+<h1><%= @screenshot.title %></h1>
+
+<p>
+  Uploaded by
+  <% if @screenshot.user.admin? %>
+    <img src="<%= asset_path("admin.png") %>" class="admin-icon" title="This user is an administrator." /><% end %><b><%= @screenshot.user.username %></b>
+  (<%= published_date_of @screenshot %>)
+</p>
+
+<p>
+  <% if @screenshot.description.empty? %>
+    <em>No description available</em>
+  <% else %>
+    <%= @screenshot.description %>
+  <% end %>
+</p>
+
+<% if logged_in? && (admin? || current_user == @screenshot.user) %>
+  <p><%= link_to 'Edit', edit_screenshot_path(@screenshot) %> | <%= link_to 'Delete', delete_screenshot_path(@screenshot) %></p>
+<% end %>
+
+<%= link_to image_tag(@screenshot.image.url :medium), @screenshot.image.url %>
+
+<h2><%= pluralize(@screenshot.comments.count, "comment") %></h2>
+
+<%= render @screenshot.comments %>
+
+<% if logged_in? %>
+  <% @comment = @screenshot.comments.build %>
+  <%= render "comments/form" %>
+<% else %>
+  <p>Please <a href="#">log in</a> or <%= link_to "register", new_user_path %> to post a comment.</p>
+<% end %>

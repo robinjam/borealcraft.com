@@ -1,18 +1,17 @@
 Minecraft::Application.routes.draw do
-
   resource :session, :only => [:create, :destroy]
 
   resources :pages do
-    member do
-      get 'delete'
-    end
+    get 'delete', on: :member
   end
 
   resources :headlines do
-    member do
-      get 'delete'
-    end
+    get 'delete', on: :member
+    resources :comments
+  end
 
+  resources :screenshots do
+    get 'delete', on: :member
     resources :comments
   end
 

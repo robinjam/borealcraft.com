@@ -1,0 +1,15 @@
+<h1>Screenshots</h1>
+
+<% @screenshots.each do |screenshot| %>
+  <div class="screenshot">
+    <%= link_to image_tag(screenshot.image.url :thumb), screenshot %>
+  </div>
+<% end %>
+
+<% if logged_in? %>
+  <p><%= link_to 'Upload screenshot...', new_screenshot_path %></p>
+<% else %>
+  <p>Please <a href="#">log in</a> or <%= link_to 'register', new_user_path %> to upload your screenshots.</p>
+<% end %>
+
+<%= will_paginate @screenshots %>
