@@ -42,6 +42,10 @@ class UsersController < ApplicationController
     
     @avatar.compose! img.crop(40, 8, 8, 8), 4, 0
     render text: @avatar.resample(32, 64).to_blob
+
+    rescue
+
+    render text: open('public/player.png', 'rb').read
   end
 
   protected
