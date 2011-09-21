@@ -11,3 +11,6 @@
 <p>Registered: <%= published_date_of @user %></p>
 <p>Comments: <%= @user.comments.count %></p>
 <p>Screenshots: <%= @user.screenshots.count %></p>
+
+<h2>Gameplay stats</h2>
+<p><a href="http://mine.robinjam.net/stats/?player=<%= @user.username %>">Click here</a></p>
