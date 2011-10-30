@@ -62,6 +62,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
+    minitest (2.7.0)
     multi_json (1.0.3)
     paperclip (2.4.5)
       activerecord (>= 2.3.0)
@@ -134,6 +135,7 @@ DEPENDENCIES
   execjs
   factory_girl_rails
   jquery-rails
+  minitest
   paperclip (~> 2.4)
   rails (= 3.1.1)
   redcarpet
