@@ -1,5 +1,6 @@
 module ApplicationHelper
   def markdown(text)
-    Markdown.new(text).to_html.html_safe
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    markdown.render(text).html_safe
   end
 end
