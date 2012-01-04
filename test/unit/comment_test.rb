@@ -7,9 +7,9 @@ class CommentTest < ActiveSupport::TestCase
     assert comment.errors[:content].any?
   end
   
-  test "length of comment must be less than 1000 characters" do
-    assert Comment.new(content: "a" * 1000).valid?
-    assert !Comment.new(content: "a" * 1001).valid?
+  test "length of comment must be less than 10000 characters" do
+    assert Comment.new(content: "a" * 10000).valid?
+    assert !Comment.new(content: "a" * 10001).valid?
   end
   
   test "only mass assignment of content is allowed" do
