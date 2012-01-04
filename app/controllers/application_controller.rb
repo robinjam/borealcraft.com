@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :server_online?, :current_user, :logged_in?, :admin?
+  helper_method :current_user, :logged_in?, :admin?
   before_filter :authorize
 
   protected
@@ -14,10 +14,6 @@ class ApplicationController < ActionController::Base
     rescue ActionController::RedirectBackError
       redirect_to root_url, params
     end
-  end
-
-  def server_online?
-    return !`screen -ls | grep "\\.minecraft"`.empty?
   end
 
   def current_user
