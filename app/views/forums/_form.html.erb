@@ -1,0 +1,25 @@
+<%= form_for(@forum.new_record? ? [@category, @forum] : @forum) do |f| %>
+  <% if @forum.errors.any? %>
+    <p id="error_explanation">
+      <h2><%= pluralize(@forum.errors.count, "error") %> prohibited this forum from being saved:</h2>
+
+      <ul>
+      <% @forum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </p>
+  <% end %>
+
+  <p class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p class="actions">
+    <%= f.submit %>
+  </p>
+<% end %>

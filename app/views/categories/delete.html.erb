@@ -1,0 +1,5 @@
+<h1>Delete category</h1>
+
+<p>Are you sure you want to <strong>permanently delete</strong> the category '<%= @category.title %>', and all of its associated forums, threads and comments?</p>
+
+<p><%= button_to 'Yes, delete this category', @category, method: :delete %> or <%= link_to 'cancel', forums_path %></p>

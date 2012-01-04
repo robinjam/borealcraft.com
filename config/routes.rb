@@ -18,6 +18,16 @@ Minecraft::Application.routes.draw do
   resources :users do
     get 'avatar', on: :member
   end
+
+  resources :categories do
+    resources :forums, shallow: true, except: :index
+
+    get 'delete', on: :member
+  end
+
+  resources :forums, only: :index do
+    get 'delete', on: :member
+  end
   
   root to: "headlines#index"
 

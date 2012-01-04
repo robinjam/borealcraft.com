@@ -1,0 +1,5 @@
+<h1>Delete forum</h1>
+
+<p>Are you sure you want to <strong>permanently delete</strong> the forum '<%= @forum.title %>', and all of its associated threads and comments?</p>
+
+<p><%= button_to 'Yes, delete this forum', @forum, method: :delete %> or <%= link_to 'cancel', forums_path %></p>
