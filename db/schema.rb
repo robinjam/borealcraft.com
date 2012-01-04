@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110915205626) do
+ActiveRecord::Schema.define(:version => 20120104104420) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id"
@@ -24,6 +30,16 @@ ActiveRecord::Schema.define(:version => 20110915205626) do
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "forums", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "forums", ["category_id"], :name => "index_forums_on_category_id"
 
   create_table "headlines", :force => true do |t|
     t.string   "title"
@@ -60,6 +76,17 @@ ActiveRecord::Schema.define(:version => 20110915205626) do
   end
 
   add_index "screenshots", ["user_id"], :name => "index_screenshots_on_user_id"
+
+  create_table "topics", :force => true do |t|
+    t.integer  "forum_id"
+    t.string   "title"
+    t.boolean  "locked"
+    t.boolean  "sticky"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "topics", ["forum_id"], :name => "index_topics_on_forum_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"

@@ -21,4 +21,17 @@ FactoryGirl.define do
     description "Description of test screenshot"
     image { fixture_file_upload('Creeper.png', 'image/png') }
   end
+
+  factory :category do
+    title "Test category"
+  end
+
+  factory :forum do
+    title "Test forum"
+    description "Test forum description"
+  end
+
+  factory :topic do
+    title "Test topic"
+  end
 end
