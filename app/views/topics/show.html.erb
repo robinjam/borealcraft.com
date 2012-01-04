@@ -1,0 +1,13 @@
+<h1><%= @topic.title %></h1>
+
+<% @topic.comments.each do |comment| %>
+  <h2><%= comment.user.username %></h2>
+  <p><%= comment.content %></p>
+<% end %>
+
+<% if logged_in? %>
+  <% @comment = @topic.comments.build %>
+  <%= render "comments/form" %>
+<% else %>
+  <p>Please <a href="#">log in</a> or <%= link_to "register", new_user_path %> to post a comment.</p>
+<% end %>

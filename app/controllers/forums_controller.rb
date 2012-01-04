@@ -5,6 +5,10 @@ class ForumsController < ApplicationController
     @categories = Category.all
   end
 
+  def show
+    @forum = Forum.find(params[:id])
+  end
+
   def new
     @category = Category.find(params[:category_id])
     @forum = @category.forums.build

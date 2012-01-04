@@ -27,6 +27,10 @@ Minecraft::Application.routes.draw do
 
   resources :forums, only: :index do
     get 'delete', on: :member
+
+    resources :topics, shallow: true do
+      resources :comments
+    end
   end
   
   root to: "headlines#index"

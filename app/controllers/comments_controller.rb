@@ -28,6 +28,7 @@ class CommentsController < ApplicationController
     case
       when params[:headline_id] then Headline.find(params[:headline_id])
       when params[:screenshot_id] then Screenshot.find(params[:screenshot_id])
+      when params[:topic_id] then Topic.find(params[:topic_id])
     end
   end  
 
@@ -35,6 +36,7 @@ class CommentsController < ApplicationController
     case
       when params[:headline_id] then headline_url(parent)
       when params[:screenshot_id] then screenshot_url(parent)
+      when params[:topic_id] then topic_url(parent)
     end
   end
 end
