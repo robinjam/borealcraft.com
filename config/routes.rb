@@ -35,6 +35,8 @@ Minecraft::Application.routes.draw do
       resources :comments
     end
   end
+
+  resources :comments, only: [:edit, :update]
   
   root to: "headlines#index"
 

@@ -1,4 +1,4 @@
-<%= form_for [@commentable, @comment] do |f| %>
+<%= form_for (@comment.new_record? ? [@commentable, @comment] : @comment) do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <p>Uh-oh, looks like you done goofed:</p>

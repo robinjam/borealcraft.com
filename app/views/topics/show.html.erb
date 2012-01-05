@@ -17,6 +17,9 @@
     <%= image_tag avatar_user_path(comment.user, :png), style: "float: right; padding: 5px;" %>
     <%= render comment.user %> says (<%= published_date_of comment %>)
   </h2>
+  <% if admin? || comment.user == current_user %>
+    <%= link_to 'Edit', edit_comment_path(comment) %>
+  <% end %>
   <p><%= markdown comment.content, filter_html: true %></p>
 </div>
 <% end %>

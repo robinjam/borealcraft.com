@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  skip_before_filter :authorize, only: [:index, :create]
+  skip_before_filter :authorize, only: [:index, :create, :edit, :update]
 
   def index
     redirect_to parent_url(parent_object)
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build(params[:comment])
     @comment.user = current_user
 
-    if @commentable.try(:locked?) && !admin?
+    if @commentable.class == Topic && @commentable.locked? && !admin?
       redirect_to @commentable, alert: "You are not authorized to post on locked threads."
       return
     end
@@ -26,6 +26,27 @@ class CommentsController < ApplicationController
     else
       render :action => 'new'
     end
+  end
+
+  def edit
+    @comment = Comment.find(params[:id])
+
+    unless admin? || @comment.user == current_user
+      redirect_to root_url, alert: "You are not authorized to edit other people's comments."
+      return
+    end
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+
+    unless admin? || @comment.user == current_user
+      redirect_to root_url, alert: "You are not authorized to edit other people's comments."
+      return
+    end
+
+    @comment.update_attributes(params[:comment]) ?
+      redirect_to(@comment.commentable, notice: "Comment updated successfully") : render(:edit)
   end
 
   private

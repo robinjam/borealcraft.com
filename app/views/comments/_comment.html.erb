@@ -1,5 +1,8 @@
 <article class="comment">
   <header>
+    <% if admin? || comment.user == current_user %>
+      <div style="float: right;"><%= link_to 'Edit', edit_comment_path(comment) %></div>
+    <% end %>
     <p>
       <%= render comment.user %> (<%= published_date_of comment %>):
     </p>
