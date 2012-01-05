@@ -16,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      <% category.forums.each do |forum| %>
+      <% category.forums.sort_by { |f| f.title.downcase }.each do |forum| %>
         <tr>
           <td>
             <strong><%= link_to forum.title, forum %></strong>

@@ -32,4 +32,18 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @commentable = @topic
   end
+
+  def lock
+    @topic = Topic.find(params[:id])
+    @topic.locked = !@topic.locked?
+    @topic.save
+    redirect_to @topic, notice: "The thread has been #{@topic.locked? ? 'locked' : 'unlocked'}."
+  end
+  
+  def sticky
+    @topic = Topic.find(params[:id])
+    @topic.sticky = !@topic.sticky?
+    @topic.save
+    redirect_to @topic, notice: "The thread has been #{@topic.sticky? ? 'stickied' : 'unstickied'}."
+  end
 end

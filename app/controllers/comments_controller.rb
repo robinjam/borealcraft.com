@@ -9,11 +9,17 @@ class CommentsController < ApplicationController
     unless logged_in?
       flash.keep
       redirect_to parent_url(@commentable), alert: 'You must be logged in to do that.'
+      return
     end
     
     @commentable = parent_object
     @comment = @commentable.comments.build(params[:comment])
     @comment.user = current_user
+
+    if @commentable.try(:locked?) && !admin?
+      redirect_to @commentable, alert: "You are not authorized to post on locked threads."
+      return
+    end
 
     if @comment.save
       redirect_to parent_url(@commentable), notice: "Your comment was posted successfully."

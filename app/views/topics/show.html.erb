@@ -1,13 +1,33 @@
-<h1><%= @topic.title %></h1>
+<% if @topic.sticky? %><%= image_tag 'sticky.png', style: 'float: right;' %><% end %>
+<% if @topic.locked? %><%= image_tag 'locked.png', style: 'float: right;' %><% end %>
 
-<% @topic.comments.each do |comment| %>
-  <h2><%= comment.user.username %></h2>
-  <p><%= comment.content %></p>
+<%= link_to 'Forums', forums_path %> &raquo;
+<%= @topic.forum.category.title %> &raquo;
+<%= link_to @topic.forum.title, @topic.forum %> &raquo;
+
+<h1><%= @topic.title %></h1>
+<% if admin? %>
+  <%= button_to (@topic.sticky? ? 'Unsticky' : 'Sticky'), sticky_topic_path(@topic) %>
+  <%= button_to (@topic.locked? ? 'Unlock' : 'Lock'), lock_topic_path(@topic) %>
 <% end %>
 
-<% if logged_in? %>
-  <% @comment = @topic.comments.build %>
-  <%= render "comments/form" %>
+<% @topic.comments.each do |comment| %>
+<div style="background-color: #EEE; padding: 10px 20px; border-radius: 5px; margin-top: 10px;">
+  <h2>
+    <%= image_tag avatar_user_path(comment.user, :png), style: "float: right; padding: 5px;" %>
+    <%= render comment.user %> says (<%= published_date_of comment %>)
+  </h2>
+  <p><%= markdown comment.content, filter_html: true %></p>
+</div>
+<% end %>
+
+<% if @topic.locked? && !admin? %>
+  <p><i>This thread is closed to new replies.</i></p>
 <% else %>
-  <p>Please <a href="#">log in</a> or <%= link_to "register", new_user_path %> to post a comment.</p>
+  <% if logged_in? %>
+    <% @comment = @topic.comments.build %>
+    <%= render "comments/form" %>
+  <% else %>
+    <p>Please <a href="#">log in</a> or <%= link_to "register", new_user_path %> to post a comment.</p>
+  <% end %>
 <% end %>

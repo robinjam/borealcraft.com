@@ -1,3 +1,6 @@
+<%= link_to 'Forums', forums_path %> &raquo;
+<%= @forum.category.title %> &raquo;
+
 <h1><%= @forum.title %></h1>
 
 <table style="width: 100%">
@@ -8,11 +11,17 @@
     </tr>
   </thead>
   <tbody>
-    <% @forum.topics.each do |topic| %>
-      <tr>
+    <% @forum.topics.by_pinned.each do |topic| %>
+      <tr style="height: 50px;">
         <td>
+          <% if topic.sticky? %>
+            <%= image_tag 'sticky.png', style: 'vertical-align: middle;' %>
+          <% end %>
+          <% if topic.locked? %>
+            <%= image_tag 'locked.png', style: 'vertical-align: middle;' %>
+          <% end %>
           <strong><%= link_to topic.title, topic %></strong><br>
-          <%= link_to topic.user.username, topic.user %>
+          by <%= link_to topic.user.username, topic.user %>, <%= published_date_of topic %>
         </td>
         <td><%= topic.replies %></td>
       </tr>
@@ -20,4 +29,6 @@
   </tbody>
 </table>
 
-<p><%= link_to 'New thread...', new_forum_topic_path(@forum) %></p>
+<% if logged_in? %>
+  <p><%= link_to 'New thread...', new_forum_topic_path(@forum) %></p>
+<% end %>

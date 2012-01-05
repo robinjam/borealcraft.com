@@ -29,6 +29,9 @@ Minecraft::Application.routes.draw do
     get 'delete', on: :member
 
     resources :topics, shallow: true do
+      post 'lock', on: :member
+      post 'sticky', on: :member
+      
       resources :comments
     end
   end
