@@ -2,7 +2,10 @@ require 'test_helper'
 
 class HeadlinesControllerTest < ActionController::TestCase
   setup do
-    @headline = Headline.create!(title: "Test", content: "This is a test", created_at: 5.minutes.ago)
+    @headline = Headline.create(title: "Test", content: "This is a test")
+    @headline.created_at = 5.minutes.ago;
+    @headline.save!
+    
     @headline_two = Headline.create!(title: "Test", content: "This is a test")
   end
 
@@ -17,9 +20,9 @@ class HeadlinesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create post" do
+  test "should create headline" do
     assert_difference('Headline.count') do
-      as_admin { post :create, headline: @headline_two.attributes }
+      as_admin { post :create, headline: { title: "Test", content: "This is a test" } }
     end
 
     assert_not_nil assigns(:headline)

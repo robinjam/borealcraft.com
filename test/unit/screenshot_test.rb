@@ -8,11 +8,8 @@ class ScreenshotTest < ActiveSupport::TestCase
   end
 
   test "only allows mass assignment of title and description" do
-    screenshot = Screenshot.new(title: "Title", description: "Description", created_at: Time.now, updated_at: Time.now)
-    assert_equal "Title", screenshot.title
-    assert_equal "Description", screenshot.description
-    assert_nil screenshot.created_at
-    assert_nil screenshot.updated_at
+    assert_attributes_accessible Screenshot, [:title, :description]
+    assert_attributes_protected Screenshot, [:user_id, :created_at, :updated_at]
   end
   
   test "destroys all associated comments on delete" do

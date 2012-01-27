@@ -8,10 +8,8 @@ class CategoryTest < ActiveSupport::TestCase
   end
   
   test "only allows mass assignment of title" do
-    category = Category.new(title: "Title", created_at: Time.now, updated_at: Time.now)
-    assert_equal "Title", category.title
-    assert_nil category.created_at
-    assert_nil category.updated_at
+    assert_attributes_accessible Category, [:title]
+    assert_attributes_protected Category, [:created_at, :updated_at]
   end
 
   test "destroys all associated forums on delete" do

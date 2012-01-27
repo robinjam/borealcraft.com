@@ -9,10 +9,7 @@ class PageTest < ActiveSupport::TestCase
   end
   
   test "only allows mass assignment of title and content" do
-    page = Page.new(title: "Title", content: "Content", created_at: Time.now, updated_at: Time.now)
-    assert_equal "Title", page.title
-    assert_equal "Content", page.content
-    assert_nil page.created_at
-    assert_nil page.updated_at
+    assert_attributes_accessible Page, [:title, :content]
+    assert_attributes_protected Page, [:created_at, :updated_at]
   end
 end

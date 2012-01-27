@@ -29,7 +29,7 @@ class ScreenshotsControllerTest < ActionController::TestCase
 
   test "should update screenshot" do
     screenshot = Factory(:screenshot)
-    as_admin { post :update, id: screenshot.to_param, screenshot: screenshot.attributes.merge(title: 'Updated title') }
+    as_admin { post :update, id: screenshot.to_param, screenshot: screenshot.attributes.slice(:description).merge(title: 'Updated title') }
     assert_redirected_to screenshot_path(assigns(:screenshot))
     assert_equal 'Updated title', assigns(:screenshot).title
   end

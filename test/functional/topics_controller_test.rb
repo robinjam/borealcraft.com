@@ -2,8 +2,9 @@ require 'test_helper'
 
 class TopicsControllerTest < ActionController::TestCase
   setup do
-    @forum = Factory(:forum)
-    @topic = Factory(:topic)
+    @category = Factory(:category)
+    @forum = Factory(:forum, category: @category)
+    @topic = Factory(:topic, forum: @forum)
   end
   
   test "should get new" do

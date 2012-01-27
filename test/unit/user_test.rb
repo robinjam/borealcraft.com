@@ -29,14 +29,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "only mass assignment of username, password and password_confirmation is allowed" do
-    u = User.new(username: 'username', password: 'password', password_confirmation: 'password_confirmation', admin: true, password_digest: 'password_digest', created_at: Time.now, updated_at: Time.now)
-    assert_equal "username", u.username
-    assert_equal "password", u.password
-    assert_equal "password_confirmation", u.password_confirmation
-    assert !u.admin?
-    assert_not_equal "password_digest", u.password_digest
-    assert_nil u.created_at
-    assert_nil u.updated_at
+    assert_attributes_accessible User, [:username, :password, :password_confirmation]
+    assert_attributes_protected User, [:admin, :password_digest, :created_at, :updated_at]
   end
 
   test "user is authenticated given correct username and password" do

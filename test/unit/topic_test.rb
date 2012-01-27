@@ -8,13 +8,8 @@ class TopicTest < ActiveSupport::TestCase
   end
   
   test "only allows mass assignment of title" do
-    topic = Topic.new(forum_id: 1, title: "Title", locked: true, sticky: true, created_at: Time.now, updated_at: Time.now)
-    assert_nil topic.forum_id
-    assert_equal "Title", topic.title
-    assert_nil topic.locked
-    assert_nil topic.sticky
-    assert_nil topic.created_at
-    assert_nil topic.updated_at
+    assert_attributes_accessible Topic, [:title]
+    assert_attributes_protected Topic, [:forum_id, :locked, :sticky, :created_at, :updated_at]
   end
 
   test "destroys all associated comments on delete" do

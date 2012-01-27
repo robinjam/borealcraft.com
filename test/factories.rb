@@ -19,7 +19,7 @@ FactoryGirl.define do
   factory :screenshot do
     title "Test screenshot"
     description "Description of test screenshot"
-    image { fixture_file_upload('Creeper.png', 'image/png') }
+    image { fixture_file_upload(File.join(Rails.root, 'test/fixtures/Creeper.png'), 'image/png') }
   end
 
   factory :category do

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PagesControllerTest < ActionController::TestCase
   setup do
-    @page = Page.create(title: 'Test page', content: 'Test content')
+    @page = Page.create!(title: 'Test page', content: 'Test content')
   end
 
   test "should get new" do
@@ -12,7 +12,7 @@ class PagesControllerTest < ActionController::TestCase
 
   test "should create page" do
     assert_difference('Page.count') do
-      as_admin { post :create, page: @page.attributes }
+      as_admin { post :create, page: { title: 'Test page', content: 'Test content' } }
     end
 
     assert_redirected_to page_path(assigns(:page))
@@ -29,7 +29,7 @@ class PagesControllerTest < ActionController::TestCase
   end
 
   test "should update page" do
-    as_admin { put :update, id: @page.to_param, page: @page.attributes }
+    as_admin { put :update, id: @page.to_param, page: @page.attributes.slice(:title, :content) }
     assert_redirected_to page_path(assigns(:page))
   end
 

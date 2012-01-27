@@ -29,4 +29,16 @@ class ActiveSupport::TestCase
     yield
     session[:user_id] = user_id
   end
+  
+  def assert_attributes_protected(klass, attrs)
+    attrs.each do |a|
+      assert !klass.accessible_attributes.include?(a) || klass.protected_attributes.include?(a)
+    end
+  end
+  
+  def assert_attributes_accessible(klass, attrs)
+    attrs.each do |a|
+      assert klass.accessible_attributes.include?(a) || !klass.protected_attributes.include?(a)
+    end
+  end
 end
