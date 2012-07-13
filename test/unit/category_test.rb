@@ -13,8 +13,8 @@ class CategoryTest < ActiveSupport::TestCase
   end
 
   test "destroys all associated forums on delete" do
-    category = Factory(:category)
-    forum = Factory(:forum, category: category)
+    category = FactoryGirl.create(:category)
+    forum = FactoryGirl.create(:forum, category: category)
     category.destroy
     assert_nil Forum.find_by_id(forum.id), "Forum should have been deleted"
   end

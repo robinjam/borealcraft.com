@@ -13,8 +13,8 @@ class ScreenshotTest < ActiveSupport::TestCase
   end
   
   test "destroys all associated comments on delete" do
-    screenshot = Factory(:screenshot)
-    comment = Factory(:comment, commentable: screenshot)
+    screenshot = FactoryGirl.create(:screenshot)
+    comment = FactoryGirl.create(:comment, commentable: screenshot)
     screenshot.destroy
     assert_nil Comment.find_by_id(comment.id), "Comment should have been deleted"
   end

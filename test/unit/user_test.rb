@@ -2,25 +2,25 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   test "users are not admin by default" do
-    assert !Factory.build(:user).admin?
+    assert !FactoryGirl.build(:user).admin?
   end
 
   test "username is required" do
-    assert !Factory.build(:user, username: nil).valid?
+    assert !FactoryGirl.build(:user, username: nil).valid?
   end
 
   test "password must be a minimum of 6 characters long" do
-    assert Factory.build(:user, password: '123456').valid?
-    assert !Factory.build(:user, password: '12345').valid?
+    assert FactoryGirl.build(:user, password: '123456').valid?
+    assert !FactoryGirl.build(:user, password: '12345').valid?
   end
 
   test "username must be unique" do
-    u = Factory(:user)
-    assert !Factory.build(:user, username: u.username).valid?
+    u = FactoryGirl.create(:user)
+    assert !FactoryGirl.build(:user, username: u.username).valid?
   end
 
   test "token must be correct on create but must not be required on update" do
-    user = Factory.build(:user, token: "incorrect")
+    user = FactoryGirl.build(:user, token: "incorrect")
     assert !user.valid?
     user.token = User.generate_token(user.username)
     assert user.save
@@ -34,7 +34,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "user is authenticated given correct username and password" do
-    u = Factory(:user)
+    u = FactoryGirl.create(:user)
     assert_equal u, User.authenticate(u.username, u.password)
     assert !User.authenticate(u.username, "Incorrect password")
   end
@@ -45,15 +45,15 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "destroys all associated comments on delete" do
-    user = Factory(:user)
-    comment = Factory(:comment, user: user)
+    user = FactoryGirl.create(:user)
+    comment = FactoryGirl.create(:comment, user: user)
     user.destroy
     assert_nil Comment.find_by_id(comment.id), "Comment should have been deleted"
   end
 
   test "destroys all associated screenshots on delete" do
-    user = Factory(:user)
-    screenshot = Factory(:screenshot, user: user)
+    user = FactoryGirl.create(:user)
+    screenshot = FactoryGirl.create(:screenshot, user: user)
     user.destroy
     assert_nil Screenshot.find_by_id(screenshot.id), "Screenshot should have been deleted"
   end

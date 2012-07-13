@@ -18,7 +18,7 @@ class ForumsControllerTest < ActionController::TestCase
 
   test "should create forum" do
     assert_difference('Forum.count') do
-      as_admin { post :create, forum: Factory.attributes_for(:forum), category_id: @category.to_param }
+      as_admin { post :create, forum: FactoryGirl.attributes_for(:forum), category_id: @category.to_param }
     end
 
     assert_not_nil assigns(:forum)

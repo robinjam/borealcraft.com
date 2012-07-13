@@ -12,7 +12,7 @@ class CategoriesControllerTest < ActionController::TestCase
 
   test "should create category" do
     assert_difference('Category.count') do
-      as_admin { post :create, category: Factory.attributes_for(:category) }
+      as_admin { post :create, category: FactoryGirl.attributes_for(:category) }
     end
 
     assert_not_nil assigns(:category)

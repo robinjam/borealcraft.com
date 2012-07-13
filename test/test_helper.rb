@@ -16,7 +16,7 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   def as_admin
     user_id = session[:user_id]
-    u = Factory(:user, admin: true)
+    u = FactoryGirl.create(:user, admin: true)
     session[:user_id] = u.id
     yield
     session[:user_id] = user_id
@@ -24,7 +24,7 @@ class ActiveSupport::TestCase
 
   def as_user
     user_id = session[:user_id]
-    u = Factory(:user)
+    u = FactoryGirl.create(:user)
     session[:user_id] = u.id
     yield
     session[:user_id] = user_id

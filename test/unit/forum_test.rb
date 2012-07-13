@@ -14,18 +14,18 @@ class ForumTest < ActiveSupport::TestCase
   end
 
   test "destroys all associated topics on delete" do
-    forum = Factory(:forum)
-    topic = Factory(:topic, forum: forum)
+    forum = FactoryGirl.create(:forum)
+    topic = FactoryGirl.create(:topic, forum: forum)
     forum.destroy
     assert_nil Topic.find_by_id(topic.id), "Topic should have been deleted"
   end
   
   test "accessing comments through topics" do
-    forum = Factory(:forum)
-    topic1 = Factory(:topic, forum: forum)
-    topic2 = Factory(:topic, forum: forum)
-    Factory(:comment, commentable: topic1)
-    Factory(:comment, commentable: topic2)
+    forum = FactoryGirl.create(:forum)
+    topic1 = FactoryGirl.create(:topic, forum: forum)
+    topic2 = FactoryGirl.create(:topic, forum: forum)
+    FactoryGirl.create(:comment, commentable: topic1)
+    FactoryGirl.create(:comment, commentable: topic2)
     assert_equal 2, forum.comments.count
   end
 end

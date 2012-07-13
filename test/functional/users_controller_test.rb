@@ -8,7 +8,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, user: Factory.attributes_for(:user)
+      post :create, user: FactoryGirl.attributes_for(:user)
     end
 
     assert_not_nil assigns(:user)

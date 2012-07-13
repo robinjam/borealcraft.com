@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
   setup do
-    @user = Factory(:user, password: "test_password")
+    @user = FactoryGirl.create(:user, password: "test_password")
   end
   
   test "should log in user" do

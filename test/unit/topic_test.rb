@@ -13,8 +13,8 @@ class TopicTest < ActiveSupport::TestCase
   end
 
   test "destroys all associated comments on delete" do
-    topic = Factory(:topic)
-    comment = Factory(:comment, commentable: topic)
+    topic = FactoryGirl.create(:topic)
+    comment = FactoryGirl.create(:comment, commentable: topic)
     topic.destroy
     assert_nil Comment.find_by_id(comment.id), "Comment should have been deleted"
   end
