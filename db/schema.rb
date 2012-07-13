@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(:version => 20120104104420) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(:version => 20120104104420) do
     t.string   "commentable_type"
     t.integer  "user_id"
     t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(:version => 20120104104420) do
     t.integer  "category_id"
     t.string   "title"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "forums", ["category_id"], :name => "index_forums_on_category_id"
@@ -44,31 +44,31 @@ ActiveRecord::Schema.define(:version => 20120104104420) do
   create_table "headlines", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "posts", :force => true do |t|
     t.string   "type"
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "screenshots", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(:version => 20120104104420) do
     t.string   "title"
     t.boolean  "locked"
     t.boolean  "sticky"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "topics", ["forum_id"], :name => "index_topics_on_forum_id"
@@ -92,8 +92,8 @@ ActiveRecord::Schema.define(:version => 20120104104420) do
     t.string   "username"
     t.string   "password_digest"
     t.boolean  "admin"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end
