@@ -1,4 +1,4 @@
-Minecraft::Application.routes.draw do
+MundusMeus::Application.routes.draw do
   resource :session, :only => [:create, :destroy]
 
   resources :pages do

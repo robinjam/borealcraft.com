@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Minecraft::Application.load_tasks
+MundusMeus::Application.load_tasks
