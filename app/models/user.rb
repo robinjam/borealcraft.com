@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   private
 
-  SALT = "`@_0$mQ.x`BN^*C*`3WY93`LTk+>]y!L}15'5fZJpB}g&>1DzmW#O'=Rve_y9Z9"
+  SALT = MundusMeus::Application.config.secret_token
 
   def token_must_be_correct
     unless token == User.generate_token(username)
