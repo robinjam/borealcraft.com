@@ -11,7 +11,7 @@ class Topic < ActiveRecord::Base
   scope :by_pinned, includes(:comments).order('topics.sticky DESC').order('comments.created_at DESC')
 
   def user
-    comments.first.user
+    comments.order("created_at ASC").first.user
   end
 
   def replies
