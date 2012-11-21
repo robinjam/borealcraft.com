@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_filter :set_content_type, only: [:avatar]
 
   def index
-    @users = User.all
+    @users = User.order(:created_at)
   end
 
   def show
