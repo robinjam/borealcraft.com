@@ -4,7 +4,22 @@ class Screenshot < ActiveRecord::Base
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
 
-  has_attached_file :image, styles: { thumb: ["220x220>", :png], medium: ["960x>", :png] }, whiny: false
+  STORAGE_OPTIONS = Rails.env.production? ? {
+      storage: :s3,
+      bucket: 'mundus-meus',
+      s3_credentials: {
+        access_key_id: ENV['S3_ACCESS_KEY_ID'],
+        secret_access_key: ENV['S3_SECRET_ACCESS_KEY']
+      },
+      path: ':attachment/:id/:style'
+    } : {}
+
+  has_attached_file :image, {
+  	styles: {
+  		thumb: ["220x220>", :png],
+  		medium: ["960x>", :png] },
+  	whiny: false
+  }.merge(STORAGE_OPTIONS)
 
   validates_presence_of :title
 
