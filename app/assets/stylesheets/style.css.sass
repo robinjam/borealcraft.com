@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css?family=Bree+Serif")
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600")
+
+body
+  font-family: "Open Sans", sans-serif
+  background: image-url("background.png") no-repeat
+  background-size: 100% auto
+  margin: 0
+  font-size: 12px
+
+h1, h2, h3, h4, h5, h6
+  font-family: "Bree Serif", serif
+
+h1
+  font-size: 300%
+
+h2
+  font-size: 200%
+
+a
+  color: blue
+
+  &:hover
+    color: red
+
+img.admin-icon
+  vertical-align: middle
+
+input[type=text], input[type=password]
+  border-radius: 3px
+  border: none
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+  padding: 5px 8px
+
+  &:hover
+    background-color: white
+
+input[type=submit]
+  color: #123d54
+  padding: 5px 8px
+  background: -webkit-gradient(linear, left top, left bottom, from(#afd9fa), to(#588fad))
+  border-radius: 3px
+  border: 1px solid #003366
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5), inset 0px 0px 1px rgba(255, 255, 255, 1)
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3)
+  cursor: pointer
+
+  &:hover
+    background: -webkit-gradient(linear, left top, left bottom, from(lighten(#afd9fa, 5%)), to(lighten(#588fad, 5%)))
+
+.flash
+  padding: 10px
+  border: solid 1px
+  border-radius: 3px
+
+  &.alert
+    background-color: rgba(255, 150, 150, 0.5)
+    border-color: rgba(255, 150, 150, 0.8)
+
+  &.notice
+    background-color: rgba(150, 255, 150, 0.5)
+    border-color: rgba(150, 255, 150, 0.8)
+
+div.wrapper
+  width: 960px
+  margin: 0 auto
+
+div.authentication
+  background-color: rgba(0, 0, 0, 0.5)
+  padding: 10px
+  text-align: right
+  border-bottom: solid 1px rgba(255, 255, 255, 0.2)
+
+  &, a
+    color: white
+
+  .wrapper *
+    display: inline
+
+div.branding
+  color: white
+
+div.navigation
+  background-color: rgba(0, 0, 0, 0.5)
+  border: solid 1px rgba(255, 255, 255, 0.2)
+  margin: 20px 0
+  box-shadow: inset 0 0 5px black
+  border-radius: 3px
+
+  ul
+    list-style: none
+    padding: 0
+    margin: 0
+
+  li
+    display: inline
+
+  a
+    color: white
+    padding: 10px
+    display: inline-block
+    text-decoration: none
+
+    &:hover
+      background-color: rgba(0, 0, 0, 0.5)
+
+div.main
+  background-color: rgba(255, 255, 255, 0.8)
+  border-top: solid 1px white
+  overflow: auto
+
+  & > div.wrapper
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
+    overflow: auto
+    padding: 0 20px
+    width: 920px
+
+div.footer
+  background-color: black
+  color: white
+  overflow: auto

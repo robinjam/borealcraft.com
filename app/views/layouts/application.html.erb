@@ -18,26 +18,35 @@
 </head>
 <body class="<%= controller.controller_name %>">
 
+<div class="authentication">
+  <div class="wrapper">
+    <%= render partial: 'authentication' %>
+  </div>
+</div>
+<div class="branding">
+  <div class="wrapper">
+    <h1>Mundus Meus</h1>
+  </div>
+</div>
 <div class="wrapper">
-	<header>
-	</header>
-	<div class="authentication">
-	  <%= render partial: 'authentication' %>
-	</div>
-	<nav>
+  <div class="navigation">
     <%= render partial: 'navigation' %>
-	</nav>
-  <% flash.each do |key, value| %>
-    <p class="flash <%= key %>"><%= value %></p>
-  <% end %>
-	<section>
+  </div>
+</div>
+<div class="main">
+  <div class="wrapper">
+    <% flash.each do |key, value| %>
+      <p class="flash <%= key %>"><%= value %></p>
+    <% end %>
 
     <%= yield %>
-	  
-	</section>
-	<footer>
-		<p>&copy; <%= Time.now.year %> James Robinson.</p>
-	</footer>
+    
+  </div>
+</div>
+<div class="footer">
+  <div class="wrapper">
+    <p>&copy; <%= Time.now.year %> James Robinson.</p>
+  </div>
 </div>
 
 </body>

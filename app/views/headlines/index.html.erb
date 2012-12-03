@@ -3,10 +3,10 @@
 <% @headlines.each do |post| %>
   <article>
     <header>
-      <h1>
+      <h2>
         <%= link_to post.title, post %>
         <time datetime="<%= post.created_at.iso8601 %>"><%= published_date_of post %></time>
-      </h1>
+      </h2>
     </header>
     <%= markdown post.content %>
       <footer>

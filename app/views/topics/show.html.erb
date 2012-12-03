@@ -1,9 +1,11 @@
+<p>
+  <%= link_to 'Forums', forums_path %> &raquo;
+  <%= @topic.forum.category.title %> &raquo;
+  <%= link_to @topic.forum.title, @topic.forum %> &raquo;
+</p>
+
 <% if @topic.sticky? %><%= image_tag 'sticky.png', style: 'float: right;' %><% end %>
 <% if @topic.locked? %><%= image_tag 'locked.png', style: 'float: right;' %><% end %>
-
-<%= link_to 'Forums', forums_path %> &raquo;
-<%= @topic.forum.category.title %> &raquo;
-<%= link_to @topic.forum.title, @topic.forum %> &raquo;
 
 <h1><%= @topic.title %></h1>
 <% if admin? %>
