@@ -10,20 +10,20 @@
     </div>
   <% end %>
 
-  <p class="field">
-    <%= f.label :title %><br />
+  <div class="field">
+    <%= f.label :title %>
     <%= f.text_field :title %>
-  </p>
-  <p class="field">
-    <%= f.label :description, 'Description (optional)' %><br />
+  </div>
+  <div class="field">
+    <%= f.label :description, 'Description (optional)' %>
     <%= f.text_area :description %>
-  </p>
-  <p class="field">
-    <%= f.label :image %><br />
+  </div>
+  <div class="field">
+    <%= f.label :image %>
     <%= f.file_field :image %>
-  </p>
+  </div>
 
-  <p class="actions">
+  <div class="actions">
     <%= f.submit %>
-  </p>
+  </div>
 <% end %>

@@ -11,17 +11,17 @@
     </p>
   <% end %>
 
-  <p class="field">
-    <%= f.label :title %><br />
+  <div class="field">
+    <%= f.label :title %>
     <%= f.text_field :title %>
-  </p>
+  </div>
   <%= fields_for @topic.comments.first do |cf| %>
-    <p class="field">
-      <%= cf.label :content %></br />
+    <div class="field">
+      <%= cf.label :content %>
       <%= cf.text_area :content %>
-    </p>
+    </div>
   <% end %>
-  <p class="actions">
+  <div class="actions">
     <%= f.submit %>
-  </p>
+  </div>
 <% end %>
