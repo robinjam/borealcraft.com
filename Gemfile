@@ -10,6 +10,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'paperclip', '~> 2.4'
 gem 'chunky_png'
 gem 'aws-sdk'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
