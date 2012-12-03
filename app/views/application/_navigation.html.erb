@@ -1,13 +1,13 @@
 <ul>
-	 <li><%= link_to 'Home', root_path %></li><!--
+	 <li class="<%= current_page?(root_path) ? 'selected' : '' %>"><%= link_to 'Home', root_path %></li><!--
 	 
 --><% Page.all.each do |page| %><!--
-  --><li><%= link_to page.title, page %></li><!--
+  --><li class="<%= current_page?(page) ? 'selected' : '' %>"><%= link_to page.title, page %></li><!--
 --><% end %><!--
 
---><li><%= link_to 'Member list', users_path %></li><!--
---><li><%= link_to 'Forums', forums_path %></li><!--
---><li><%= link_to 'Screenshots', screenshots_path %></li><!--
+--><li class="<%= current_page?(users_path) ? 'selected' : '' %>"><%= link_to 'Member list', users_path %></li><!--
+--><li class="<%= current_page?(forums_path) ? 'selected' : '' %>"><%= link_to 'Forums', forums_path %></li><!--
+--><li class="<%= current_page?(screenshots_path) ? 'selected' : '' %>"><%= link_to 'Screenshots', screenshots_path %></li><!--
 
---><% if admin? %><li><%= link_to 'Add a page', new_page_path %></li><% end %>
+--><% if admin? %><li class="<%= current_page?(new_page_path) ? 'selected' : '' %>"><%= link_to 'Add a page', new_page_path %></li><% end %>
 </ul>
