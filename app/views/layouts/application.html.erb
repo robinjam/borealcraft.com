@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Mundus Meus</title>
+  <% unless request.env['HTTP_USER_AGENT'] =~ /Windows.+Chrome/ %>
+    <script src="/snowstorm.js"></script>
+  <% end %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
