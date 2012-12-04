@@ -8,13 +8,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <style>
-      .wrapper > nav li, .authentication form {
-        zoom: 1;
-        display: inline !important;
-      }
-    </style>
+    <meta http-equiv="refresh" content="0;URL='/ie.html'">
   <![endif]-->
 </head>
 <body class="<%= controller.controller_name %>">
