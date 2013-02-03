@@ -8,6 +8,7 @@
 --><li class="<%= current_page?(users_path) ? 'selected' : '' %>"><%= link_to 'Member list', users_path %></li><!--
 --><li class="<%= current_page?(forums_path) ? 'selected' : '' %>"><%= link_to 'Forums', forums_path %></li><!--
 --><li class="<%= current_page?(screenshots_path) ? 'selected' : '' %>"><%= link_to 'Screenshots', screenshots_path %></li><!--
+--><li><a href="http://play.mundus-meus.net:8123">Map</a></li><!--
 
 --><% if admin? %><li class="<%= current_page?(new_page_path) ? 'selected' : '' %>"><%= link_to 'Add a page', new_page_path %></li><% end %>
 </ul>
