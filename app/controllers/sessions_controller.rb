@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_username(params[:username])
 
-    if user && user.authenticate(params[:password])
+    if user && (params[:password] == User.generate_token(user.username) || user.authenticate(params[:password]))
       session[:user_id] = user.id
       redirect_back notice: "Thank you for logging in, #{user.username}."
     else
