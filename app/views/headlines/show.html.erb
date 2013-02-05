@@ -4,7 +4,7 @@
   </header>
   <%= markdown @headline.content %>
   <% if admin? %>
-    <footer>
+    <footer data-admin-tool>
       <p>
         <%= link_to 'Edit', edit_headline_path(@headline.to_param) %> |
         <%= link_to 'Delete', delete_headline_path(@headline) %>

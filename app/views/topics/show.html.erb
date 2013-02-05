@@ -9,8 +9,10 @@
 
 <h1><%= @topic.title %></h1>
 <% if admin? %>
-  <%= button_to (@topic.sticky? ? 'Unsticky' : 'Sticky'), sticky_topic_path(@topic) %>
-  <%= button_to (@topic.locked? ? 'Unlock' : 'Lock'), lock_topic_path(@topic) %>
+  <div data-admin-tool>
+    <%= button_to (@topic.sticky? ? 'Unsticky' : 'Sticky'), sticky_topic_path(@topic) %>
+    <%= button_to (@topic.locked? ? 'Unlock' : 'Lock'), lock_topic_path(@topic) %>
+  </div>
 <% end %>
 
 <% @topic.comments.each do |comment| %>

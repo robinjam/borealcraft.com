@@ -1,5 +1,11 @@
 <% if logged_in? %>
-  Logged in as <%= render current_user %><%= button_to 'Log out', session_path, method: :delete %>
+  <% if admin? %>
+    <div id="admin-tools-checkbox">
+      <input type="checkbox" name="admin_tools"><label for="admin_tools">Enable admin tools</label> | 
+    </div>
+  <% end %>
+  Logged in as <%= render current_user %>
+  <%= button_to 'Log out', session_path, method: :delete %>
 <% else %>
   <%= form_tag session_path do %>
 	  <%= text_field_tag :username, nil, placeholder: "Username" %>

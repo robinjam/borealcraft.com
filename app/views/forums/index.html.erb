@@ -4,7 +4,9 @@
   <h2>
     <%= category.title %>
     <% if admin? %>
-      (<%= link_to 'edit', edit_category_path(category) %> | <%= link_to 'delete', delete_category_path(category) %>)
+      <span data-admin-tool>
+        (<%= link_to 'edit', edit_category_path(category) %> | <%= link_to 'delete', delete_category_path(category) %>)
+      </span>
     <% end %>
   </h2>
   <table style="width: 100%">
@@ -21,7 +23,9 @@
           <td>
             <strong><%= link_to forum.title, forum %></strong>
             <% if admin? %>
-              (<%= link_to 'edit', edit_forum_path(forum) %> | <%= link_to 'delete', delete_forum_path(forum) %>)
+              <span data-admin-tool>
+                (<%= link_to 'edit', edit_forum_path(forum) %> | <%= link_to 'delete', delete_forum_path(forum) %>)
+              </span>
             <% end %>
             <br>
             <%= forum.description %>
@@ -33,10 +37,10 @@
     </tbody>
   </table>
   <% if admin? %>
-    <p><%= link_to 'Create a new forum in this category...', new_category_forum_path(category) %></p>
+    <p data-admin-tool><%= link_to 'Create a new forum in this category...', new_category_forum_path(category) %></p>
   <% end %>
 <% end %>
 
 <% if admin? %>
-  <p><%= link_to 'Create a new category...', new_category_path %></p>
+  <p data-admin-tool><%= link_to 'Create a new category...', new_category_path %></p>
 <% end %>

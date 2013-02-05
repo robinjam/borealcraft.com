@@ -13,8 +13,10 @@
         <p>
           <%= link_to pluralize(post.comments.count, "comment"), post %>
           <% if admin? %>
-            | <%= link_to 'Edit', edit_headline_path(post) %>
-            | <%= link_to 'Delete', delete_headline_path(post) %>
+            <span data-admin-tool>
+              | <%= link_to 'Edit', edit_headline_path(post) %>
+              | <%= link_to 'Delete', delete_headline_path(post) %>
+            </span>
           <% end %>
         </p>
     </footer>
@@ -22,7 +24,7 @@
 <% end %>
 
 <% if admin? %>
-  <p><%= link_to 'New Headline', new_headline_path %></p>
+  <p data-admin-tool><%= link_to 'New Headline', new_headline_path %></p>
 <% end %>
 
 <%= will_paginate @headlines %>
