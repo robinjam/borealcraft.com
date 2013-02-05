@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
     find_by_username(username).try(:authenticate, password)
   end
 
-  def self.generate_token(username)
-    Digest::SHA512.hexdigest("#{username}#{SALT}").to_i(16).base62_encode[0..6]
+  def self.generate_token(username, datestamp = Time.now.utc.strftime("%Y%m%d"))
+    Digest::SHA512.hexdigest("#{username}#{SALT}#{datestamp}").to_i(16).base62_encode[0..6]
   end
 
   private
