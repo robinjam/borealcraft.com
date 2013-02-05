@@ -1,4 +1,5 @@
 require 'digest/sha2'
+require 'base62_encode'
 
 class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
@@ -21,7 +22,7 @@ class User < ActiveRecord::Base
   end
 
   def self.generate_token(username)
-    Digest::SHA512.hexdigest("#{username}#{SALT}")[0..4]
+    Digest::SHA512.hexdigest("#{username}#{SALT}").to_i(16).base62_encode[0..6]
   end
 
   private

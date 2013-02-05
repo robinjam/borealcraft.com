@@ -40,8 +40,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "generation of unique token" do
-    assert_equal "89fd6", User.generate_token("foo")
-    assert_equal "19ee8", User.generate_token("bar")
+    assert_equal "W2Nj4za", User.generate_token("foo")
+    assert_equal "61I7FP6", User.generate_token("bar")
   end
 
   test "destroys all associated comments on delete" do
