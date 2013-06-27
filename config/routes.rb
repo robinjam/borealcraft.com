@@ -1,4 +1,7 @@
 BorealCraft::Application.routes.draw do
+  get "(*path)" => redirect { |params| "http://borealcraft.com/#{params[:path]}" },
+    constraints: -> (request) { request.host != "borealcraft.com" } if Rails.env.production?
+
   resource :session, :only => [:create, :destroy]
 
   resources :pages do
