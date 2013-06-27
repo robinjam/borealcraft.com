@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-MundusMeus::Application.load_tasks
+BorealCraft::Application.load_tasks

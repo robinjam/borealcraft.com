@@ -1,4 +1,4 @@
-MundusMeus::Application.routes.draw do
+BorealCraft::Application.routes.draw do
   resource :session, :only => [:create, :destroy]
 
   resources :pages do

@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
   private
 
-  SALT = MundusMeus::Application.config.secret_token
+  SALT = BorealCraft::Application.config.secret_token
 
   def token_must_be_correct
     unless token == User.generate_token(username)
