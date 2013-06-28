@@ -7,6 +7,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.order(:created_at)
+    respond_to do |format|
+      format.html
+      format.json { render json: User.all.reduce({}) { |hash, user| hash.merge user.username => user.roles } }
+    end
   end
 
   def show

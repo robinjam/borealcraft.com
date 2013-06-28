@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
     Digest::SHA512.hexdigest("#{username}#{SALT}#{datestamp}").to_i(16).base62_encode[0..6]
   end
 
+  def roles
+    ["member", ("admin" if admin?)].compact
+  end
+
   private
 
   SALT = BorealCraft::Application.config.secret_token
