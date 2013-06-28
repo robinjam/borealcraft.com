@@ -5,12 +5,11 @@ class UsersController < ApplicationController
   caches_action :avatar, expires_in: 1.hour
   before_filter :set_content_type, only: [:avatar]
 
+  respond_to :html, :json, only: [:index]
+
   def index
     @users = User.order(:created_at)
-    respond_to do |format|
-      format.html
-      format.json { render json: User.all.reduce({}) { |hash, user| hash.merge user.username => user.roles } }
-    end
+    respond_with @users, only: [:username], methods: [:roles]
   end
 
   def show
