@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
   test "published_date_of" do
-    headline = headlines(:one)
+    headline = headlines(:one_point_zero)
     headline.created_at = 1.hour.ago
     assert_equal "about 1 hour ago", published_date_of(headline)
     headline.created_at = 2.hours.ago
