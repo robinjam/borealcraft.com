@@ -1,0 +1,24 @@
+woot:
+  commentable: one_point_zero (Headline)
+  user: notch
+  content: Woot!
+
+holy_gosh:
+  commentable: one_point_one (Headline)
+  user: jeb_
+  content: Holy gosh!
+
+rules:
+  commentable: rules (Topic)
+  user: notch
+  content: Blah blah blah
+
+awesome:
+  commentable: one_point_zero (Topic)
+  user: jeb_
+  content: This is awesome!
+
+i_know_right:
+  commentable: one_point_zero (Topic)
+  user: notch
+  content: I know right.

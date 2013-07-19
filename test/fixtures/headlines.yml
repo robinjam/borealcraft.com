@@ -1,23 +1,7 @@
-one:
-  title: Headline 1
-  content: This is headline 1
+one_point_zero:
+  title: Minecraft 1.0
+  content: Minecraft 1.0 has been officially released!
 
-two:
-  title: Headline 2
-  content: This is headline 2
-
-three:
-  title: Headline 3
-  content: This is headline 3
-
-four:
-  title: Headline 4
-  content: This is headline 4
-
-five:
-  title: Headline 5
-  content: This is headline 5
-
-six:
-  title: Headline 6
-  content: This is headline 6
+one_point_one:
+  title: Minecraft 1.1
+  content: Minecraft 1.1 has been officially released!

@@ -1,0 +1,9 @@
+rules:
+  forum: recent_updates
+  title: Rules
+  locked: true
+  sticky: true
+
+one_point_zero:
+  forum: recent_updates
+  title: Minecraft 1.0

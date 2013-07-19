@@ -1,0 +1,10 @@
+notch:
+  created_at: <%= 1.month.ago %>
+  username: Notch
+  password_digest: <%= BCrypt::Password.create("notch_password") %>
+  admin: true
+
+jeb_:
+  created_at: <%= 1.hour.ago %>
+  username: jeb_
+  password_digest: <%= BCrypt::Password.create("jeb_password") %>
