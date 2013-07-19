@@ -21,9 +21,9 @@ class Screenshot < ActiveRecord::Base
   	whiny: false
   }.merge(STORAGE_OPTIONS)
 
-  validates_presence_of :title
-
-  validates_attachment_presence :image
-  validates_attachment_content_type :image, content_type: /^image\/.+$/, message: 'is not valid'
-  validates_attachment_size :image, less_than: 10.megabytes, message: 'must be less than 10 megabytes'
+  validates :title, presence: true
+  validates :image,
+    attachment_presence: true,
+    attachment_content_type: { content_type: /^image\/.+$/, message: 'is not valid' },
+    attachment_size: { less_than: 10.megabytes, message: 'must be less than 10 megabytes' }
 end

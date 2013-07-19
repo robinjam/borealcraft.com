@@ -33,12 +33,6 @@ class UserTest < ActiveSupport::TestCase
     assert_attributes_protected User, [:admin, :password_digest, :created_at, :updated_at]
   end
 
-  test "user is authenticated given correct username and password" do
-    u = FactoryGirl.create(:user)
-    assert_equal u, User.authenticate(u.username, u.password)
-    assert !User.authenticate(u.username, "Incorrect password")
-  end
-
   test "generation of unique token" do
     assert_equal "W2Nj4za", User.generate_token("foo", "")
     assert_equal "61I7FP6", User.generate_token("bar", "")

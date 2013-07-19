@@ -10,32 +10,19 @@ class User < ActiveRecord::Base
   
   has_secure_password
 
-  validates_presence_of :username
-  validates_uniqueness_of :username
-  
-  validates_length_of :password, minimum: 6, unless: Proc.new { |u| u.password.blank? }
-
-  validate :token_must_be_correct, on: :create
-
-  def self.authenticate(username, password)
-    find_by_username(username).try(:authenticate, password)
-  end
-
-  def self.generate_token(username, datestamp = Time.now.utc.strftime("%Y%m%d"))
-    Digest::SHA512.hexdigest("#{username}#{SALT}#{datestamp}").to_i(16).base62_encode[0..6]
-  end
-
-  def roles
-    ["member", ("admin" if admin?)].compact
-  end
-
-  private
-
-  SALT = BorealCraft::Application.config.secret_token
-
-  def token_must_be_correct
+  validates :username, presence: true, uniqueness: true
+  validates :password, length: { minimum: 6 }, unless: -> (u) { u.password.blank? }
+  validate -> {
     unless token == User.generate_token(username)
       errors.add(:token, "doesn't match your username (did you capitalize your username correctly?)")
     end
-  end  
+  }, on: :create
+
+  def self.generate_token(username, datestamp = Time.now.utc.strftime("%Y%m%d"))
+    Digest::SHA512.hexdigest("#{username}#{Rails.configuration.secret_token}#{datestamp}").to_i(16).base62_encode[0..6]
+  end
+
+  def roles
+    [:member, (:admin if admin?)].compact
+  end 
 end

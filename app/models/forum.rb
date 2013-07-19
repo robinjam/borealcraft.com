@@ -5,5 +5,5 @@ class Forum < ActiveRecord::Base
   has_many :topics, dependent: :destroy
   has_many :comments, through: :topics
 
-  validates_presence_of :title, :description
+  validates :title, :description, presence: true
 end

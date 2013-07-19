@@ -3,5 +3,5 @@ class Headline < ActiveRecord::Base
 
   has_many :comments, as: :commentable, dependent: :destroy
 
-  validates_presence_of :title, :content
+  validates :title, :content, presence: true
 end

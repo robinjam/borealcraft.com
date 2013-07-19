@@ -3,5 +3,5 @@ class Category < ActiveRecord::Base
 
   has_many :forums, dependent: :destroy
 
-  validates_presence_of :title
+  validates :title, presence: true
 end
