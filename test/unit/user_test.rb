@@ -19,13 +19,9 @@ class UserTest < ActiveSupport::TestCase
     assert !FactoryGirl.build(:user, username: u.username).valid?
   end
 
-  test "token must be correct on create but must not be required on update" do
-    user = FactoryGirl.build(:user, token: "incorrect")
-    assert !user.valid?
-    user.token = User.generate_token(user.username)
-    assert user.save
-    user.token = nil
-    assert user.save
+  test "token is required on create but not on update" do
+    refute_empty User.create.errors[:token]
+    assert users(:notch).update_attributes(token: "incorrect token")
   end
 
   test "only mass assignment of username, password and password_confirmation is allowed" do
@@ -50,5 +46,10 @@ class UserTest < ActiveSupport::TestCase
     screenshot = FactoryGirl.create(:screenshot, user: user)
     user.destroy
     assert_nil Screenshot.find_by_id(screenshot.id), "Screenshot should have been deleted"
+  end
+
+  test "roles" do
+    assert_equal [:member, :admin], users(:notch).roles
+    assert_equal [:member], users(:jeb_).roles
   end
 end

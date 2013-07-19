@@ -18,4 +18,9 @@ class TopicTest < ActiveSupport::TestCase
     topic.destroy
     assert_nil Comment.find_by_id(comment.id), "Comment should have been deleted"
   end
+
+  test "topic author is author of first comment" do
+    assert_equal users(:notch), topics(:rules).user
+    assert_equal users(:jeb_), topics(:one_point_zero).user
+  end
 end
