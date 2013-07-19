@@ -8,7 +8,7 @@ class Topic < ActiveRecord::Base
 
   validates_presence_of :title
 
-  scope :by_pinned, includes(:comments).order('topics.sticky DESC').order('comments.created_at DESC')
+  scope :by_sticky, includes(:comments).order('topics.sticky DESC').order('comments.created_at DESC')
 
   def user
     comments.order("created_at ASC").first.user
