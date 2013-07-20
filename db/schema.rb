@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130719142022) do
+ActiveRecord::Schema.define(:version => 20130720042839) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -72,10 +72,10 @@ ActiveRecord::Schema.define(:version => 20130719142022) do
   create_table "topics", :force => true do |t|
     t.integer  "forum_id"
     t.string   "title"
-    t.boolean  "locked"
-    t.boolean  "sticky"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "locked",     :default => false, :null => false
+    t.boolean  "sticky",     :default => false, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "topics", ["forum_id"], :name => "index_topics_on_forum_id"
@@ -83,9 +83,9 @@ ActiveRecord::Schema.define(:version => 20130719142022) do
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "password_digest"
-    t.boolean  "admin"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.boolean  "admin",           :default => false, :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
 end
