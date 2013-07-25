@@ -1,5 +1,7 @@
 class HeadlinesController < ApplicationController
   skip_before_filter :authorize, only: [ :index, :show ]
+
+  respond_to :html, :atom, only: [:index]
   
   def index
     @headlines = Headline.order("created_at DESC").paginate(page: params[:page], per_page: 5)
