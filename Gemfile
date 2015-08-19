@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.2.2'
 
 gem 'rails', '3.2.13'
 gem 'sqlite3', group: [:development, :test]
@@ -21,5 +21,6 @@ group :assets do
 end
 
 group :test do
+  gem 'test-unit'
   gem 'factory_girl_rails'
 end
