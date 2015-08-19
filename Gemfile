@@ -5,7 +5,7 @@ gem 'rails', '3.2.22'
 gem 'sqlite3', '~> 1.3', group: [:development, :test]
 gem 'pg', '~> 0.15.0', group: :production
 gem 'jquery-rails', '~> 2.2'
-gem 'bcrypt-ruby', '~> 3.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'redcarpet', '~> 2.2'
 gem 'will_paginate', '~> 3.0'
 gem 'paperclip', '~> 3.4'
